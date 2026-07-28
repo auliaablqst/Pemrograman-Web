@@ -40,7 +40,7 @@ Ada 3 cara menghubungkan CSS ke HTML, tapi jobsheet ini memakai cara yang
 - `rel="stylesheet"` — memberi tahu browser bahwa file yang di-link ini
   adalah lembar gaya (stylesheet).
 - `href="..."` — lokasi file CSS-nya. Sama seperti tautan `<a href="...">`
-  di [dokumentasi jobsheet-01](../../jobsheet-01/dokumentasi/01-konsep-dasar.md#15-navigasi-antar-halaman-a-href),
+  di [dokumentasi jobsheet-01](jobsheet-01/dokumentasi/01-konsep-dasar.md#15-navigasi-antar-halaman-a-href),
   path ini **relatif** terhadap lokasi file HTML — lihat penjelasan
   lengkapnya di [bab 2](02-perubahan-file-html.md).
 
