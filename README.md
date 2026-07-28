@@ -94,11 +94,11 @@
 
 | Komponen | Bobot | Memetakan CPMK |
 |---|---|---|
-| Tugas/Praktik Mingguan (formatif) | 30% | CPMK-1, 2, 3, 4 |
+| Tugas/Praktik Mingguan (formatif) | 10% | CPMK-1, 2, 3, 4 |
 | Sikap & Kolaborasi (logbook) | 4% | CPMK-6 |
-| UTS (praktik front-end individu) | 15% | CPMK-1, 2, 3 |
+| UTS (praktik front-end individu) | 25% | CPMK-1, 2, 3 |
 | Progress & Dokumentasi Proyek | 11% | CPMK-4, 5 |
-| UAS (demo + presentasi aplikasi akhir) | 20% | CPMK-4, 5, 6 |
+| UAS (demo + presentasi aplikasi akhir) | 10% | CPMK-4, 5, 6 |
 | Produk Akhir Aplikasi Web (source code + fungsionalitas) | 20% | CPMK-4, 5 |
 
 **Nilai Akhir Mata Kuliah (NAM)** dihitung dari kontribusi tiap komponen terhadap ketercapaian CPMK, bukan sekadar rata-rata skor — sesuai prinsip OBA bahwa penilaian harus membuktikan *outcome* tercapai, bukan hanya aktivitas selesai.
