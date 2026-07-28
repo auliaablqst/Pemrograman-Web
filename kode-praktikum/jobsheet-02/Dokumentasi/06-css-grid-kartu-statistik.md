@@ -7,7 +7,7 @@ sejajar.
 
 ## 6.1 Mengingat Kembali HTML-nya
 
-Dari [dokumentasi HTML jobsheet-01](../../jobsheet-01/dokumentasi/02-index-html.md#22-penjelasan-bagian-per-bagian),
+Dari [dokumentasi HTML jobsheet-01](../../jobsheet-01/Dokumentasi/02-index-html.md#22-penjelasan-bagian-per-bagian),
 `index.html` punya struktur `<main>` berisi **2 buah `<section>`**:
 
 ```html
@@ -81,7 +81,7 @@ Inilah yang dimaksud catatan di [README.md](../README.md) jobsheet ini:
 *"Kartu statistik di Beranda memakai `main section:nth-of-type(2)`
 sebagai grid 3 kolom"* — dan alasan kenapa pendekatan ini dipilih
 (ketimbang menambahkan `class` khusus di HTML) dijelaskan di
-[§6.6](#66-kenapa-tidak-pakai-class-saja).
+[§6.7](#67-kenapa-tidak-pakai-class-saja).
 
 ## 6.4 Mengaktifkan Grid: `display: grid`
 

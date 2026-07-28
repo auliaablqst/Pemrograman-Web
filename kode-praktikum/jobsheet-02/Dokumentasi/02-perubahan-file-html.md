@@ -1,7 +1,7 @@
 # 2. Apa yang Berubah di File HTML?
 
 Kabar baik: kalau kamu sudah paham
-[dokumentasi HTML jobsheet-01](../../jobsheet-01/dokumentasi/README.md),
+[dokumentasi HTML jobsheet-01](../../jobsheet-01/Dokumentasi/README.md),
 kamu **tidak perlu belajar ulang** struktur HTML-nya di jobsheet ini.
 Semua `header`, `nav`, `main`, `section`, `article`, `table`, `form`,
 `footer` di 5 file HTML **persis sama** dengan jobsheet-01.
@@ -31,7 +31,7 @@ berbeda, nilai `href` pada tag `<link>` harus disesuaikan:
 | `anggota/tambah.html` | dalam folder `anggota/` | `../assets/css/style.css` |
 
 Polanya sama seperti path pada `<a href="...">` di menu navigasi
-([lihat penjelasan jobsheet-01 §1.5](../../jobsheet-01/dokumentasi/01-konsep-dasar.md#15-navigasi-antar-halaman-a-href)):
+([lihat penjelasan jobsheet-01 §1.5](../../jobsheet-01/Dokumentasi/01-konsep-dasar.md#15-navigasi-antar-halaman-a-href)):
 `../` berarti "naik satu folder ke atas" sebelum masuk ke `assets/css/style.css`.
 
 **Kesalahan paling umum** pemula saat menambahkan CSS ke banyak halaman

@@ -81,7 +81,7 @@ data buku.
 - Setiap baris punya 2 tombol: **Edit** dan **Hapus**.
 - `type="button"` artinya tombol ini **tombol biasa**, bukan tombol
   submit form (beda dengan tombol "Simpan" di halaman form — lihat
-  [dokumentasi buku/tambah.html §4.3](04-buku-tambah-html.md#43-tombol-submit)).
+  [dokumentasi buku/tambah.html §4.5](04-buku-tambah-html.md#45-tombol-submit)).
   Kalau `type` tidak ditulis dan tombol ini berada **di dalam** sebuah
   `<form>`, browser akan menganggapnya tombol submit secara default —
   makanya di sini sengaja ditulis eksplisit `type="button"`.

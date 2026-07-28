@@ -16,7 +16,7 @@ footer {
 
 ## 9.2 Penjelasan
 
-Menata teks copyright di [`<footer>`](../../jobsheet-01/dokumentasi/02-index-html.md#footer--kaki-halaman)
+Menata teks copyright di [`<footer>`](../../jobsheet-01/Dokumentasi/02-index-html.md#footer--kaki-halaman)
 (`© 2026 SIMPUS-Mini — Jobsheet 1`) yang muncul di semua halaman:
 
 | Properti | Efek |

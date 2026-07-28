@@ -2,7 +2,7 @@
 
 Bagian ini mempercantik form di `buku/tambah.html` dan
 `anggota/tambah.html` (lihat strukturnya di
-[dokumentasi HTML jobsheet-01](../../jobsheet-01/dokumentasi/04-buku-tambah-html.md)).
+[dokumentasi HTML jobsheet-01](../../jobsheet-01/Dokumentasi/04-buku-tambah-html.md)).
 
 ## 8.1 Kode CSS
 
@@ -52,7 +52,7 @@ form p {
 }
 ```
 
-Ingat dari [dokumentasi HTML](../../jobsheet-01/dokumentasi/04-buku-tambah-html.md#43-pola-setiap-isian-form-label--input),
+Ingat dari [dokumentasi HTML](../../jobsheet-01/Dokumentasi/04-buku-tambah-html.md#43-pola-setiap-isian-form-label--input),
 setiap field form dibungkus tag `<p>`. Aturan ini memberi jarak `1rem`
 di bawah **setiap** `<p>` di dalam form, sehingga tiap field (Judul,
 Pengarang, dst.) punya jarak yang jelas dari field berikutnya, tidak
@@ -73,7 +73,7 @@ form label {
   (sejajar dengan teks di sekitarnya, tidak otomatis pindah baris).
   Mengubahnya jadi `block` memaksa label **selalu memenuhi satu baris
   penuh**, memastikan input di bawahnya (ingat HTML memakai `<br>`
-  setelah label — lihat [dokumentasi HTML §4.3](../../jobsheet-01/dokumentasi/04-buku-tambah-html.md#43-pola-setiap-isian-form-label--input))
+  setelah label — lihat [dokumentasi HTML §4.3](../../jobsheet-01/Dokumentasi/04-buku-tambah-html.md#43-pola-setiap-isian-form-label--input))
   selalu berada tepat di baris baru.
 - `margin-bottom: 0.35rem;` — jarak kecil antara teks label dan kotak
   input di bawahnya.
@@ -103,7 +103,7 @@ form select {
   menerapkan gaya yang sama ke **semua** elemen `<input>` (termasuk
   `type="text"` dan `type="number"`) **dan** elemen `<select>` di dalam
   form — mencakup semua field yang dibahas di
-  [dokumentasi HTML §4.4](../../jobsheet-01/dokumentasi/04-buku-tambah-html.md#44-jenis-jenis-input-yang-dipakai).
+  [dokumentasi HTML §4.4](../../jobsheet-01/Dokumentasi/04-buku-tambah-html.md#44-jenis-jenis-input-yang-dipakai).
 - `width: 100%; max-width: 400px;` — kombinasi ini artinya: lebar input
   mengikuti lebar kotak pembungkusnya (`100%`), **tapi** tidak akan
   pernah melebihi `400px`. Di layar sempit (HP), input akan menyempit
@@ -116,7 +116,7 @@ form select {
   komponen lain (tombol, kartu) di halaman ini.
 
 **Catatan:** aturan ini **tidak** menyertakan `box-sizing`, tapi karena
-di [bab 3](03-css-reset-dan-body.md#31-css-reset-dengan-selector-universal)
+di [bab 3](03-css-reset-dan-body.md#31-css-reset-dengan-selector-universal-)
 sudah ada `* { box-sizing: border-box; }` yang berlaku untuk semua
 elemen, `padding` dan `border` pada input ini otomatis "dimakan" dari
 dalam `width: 100%`/`max-width: 400px`, bukan menambah lebar total —
@@ -145,9 +145,9 @@ form button[type="submit"]:hover {
   [konsep dasar §1.4](01-konsep-dasar-css.md#14-jenis-jenis-selector-yang-dipakai-di-stylecss)):
   memilih elemen `<button>` yang punya atribut `type` bernilai persis
   `"submit"`. Ini secara khusus menyasar tombol "Simpan" (lihat
-  [dokumentasi HTML §4.5](../../jobsheet-01/dokumentasi/04-buku-tambah-html.md#45-tombol-submit)),
+  [dokumentasi HTML §4.5](../../jobsheet-01/Dokumentasi/04-buku-tambah-html.md#45-tombol-submit)),
   **tanpa** menyentuh tombol Edit/Hapus di tabel yang bertipe
-  `type="button"` ([dokumentasi HTML §3.2](../../jobsheet-01/dokumentasi/03-buku-list-html.md#kolom-aksi)) —
+  `type="button"` ([dokumentasi HTML §3.2](../../jobsheet-01/Dokumentasi/03-buku-list-html.md#kolom-aksi)) —
   contoh nyata kenapa penulisan `type="button"` secara eksplisit di
   HTML (dibanding membiarkan default) penting: ia menjadi "penanda" yang
   bisa dipakai CSS untuk membedakan jenis tombol.
