@@ -65,20 +65,7 @@ cukup ubah satu baris di `style.css`, otomatis berubah di semua halaman.
 Setiap elemen HTML di browser sebenarnya adalah sebuah **kotak (box)**,
 tersusun dari 4 lapisan dari dalam ke luar:
 
-```
-┌───────────────────────────────┐
-│           margin               │  ← jarak ke elemen LAIN di luar kotak
-│  ┌───────────────────────────┐  │
-│  │         border            │  │  ← garis pembatas/bingkai kotak
-│  │  ┌─────────────────────┐  │  │
-│  │  │      padding         │  │  │  ← jarak dari border ke isi konten
-│  │  │  ┌───────────────┐  │  │  │
-│  │  │  │    content     │  │  │  │  ← isi sesungguhnya (teks, gambar)
-│  │  │  └───────────────┘  │  │  │
-│  │  └─────────────────────┘  │  │
-│  └───────────────────────────┘  │
-└───────────────────────────────┘
-```
+![Diagram box model: 4 kotak bersarang — margin (paling luar, garis putus-putus), border, padding, dan content (paling dalam)](img/box-model.svg)
 
 - **`margin`** — jarak kosong **di luar** kotak, ke elemen tetangga.
 - **`border`** — garis di tepi kotak.
