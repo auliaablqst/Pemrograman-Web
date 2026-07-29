@@ -47,6 +47,7 @@ Sesuai [README.md](../README.md) jobsheet ini:
 5. [Menyimpan Data: Prepared Statement & `INSERT`](05-insert-prepared-statement.md)
 6. [Membaca Data: `SELECT`](06-membaca-data-select.md)
 7. [Rangkuman & Latihan Lanjutan](07-rangkuman-latihan.md)
+8. [Lampiran: Instalasi PostgreSQL di Laragon (Windows)](08-instalasi-postgresql-laragon.md)
 
 ## Struktur Folder
 

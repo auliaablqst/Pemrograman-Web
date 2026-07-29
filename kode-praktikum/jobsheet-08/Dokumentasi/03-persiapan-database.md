@@ -14,7 +14,10 @@ yang bisa langsung dicoba.
 - **PostgreSQL harus terpasang dan berjalan** di komputermu (ingat dari
   [bab 1 §1.1](01-konsep-dasar-database-sql.md#11-kenapa-butuh-database-mengingat-kembali-masalahnya):
   ia adalah program terpisah yang berjalan sendiri, bukan bagian dari
-  PHP).
+  PHP). Kalau kamu memakai **Windows dengan Laragon** dan belum pernah
+  memasang PostgreSQL sama sekali, ikuti dulu panduan langkah-per-langkah
+  di [bab 8 (Lampiran)](08-instalasi-postgresql-laragon.md) sebelum
+  melanjutkan bab ini.
 - **`php -m`** menampilkan daftar seluruh **ekstensi** (modul tambahan)
   yang aktif di instalasi PHP-mu. `pdo_pgsql` adalah ekstensi
   **spesifik** yang memungkinkan PDO (ingat dari
