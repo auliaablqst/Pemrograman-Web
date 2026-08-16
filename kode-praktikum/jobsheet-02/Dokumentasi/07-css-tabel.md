@@ -2,7 +2,7 @@
 
 Bagian ini mempercantik tabel `<table>` di `buku/list.html` dan
 `anggota/list.html` (lihat strukturnya di
-[dokumentasi HTML jobsheet-01 §3.2](../../jobsheet-01/Dokumentasi/03-buku-list-html.md#32-anatomi-tabel-html)).
+[dokumentasi HTML jobsheet-01 §3.2](../../jobsheet-01/dokumentasi/03-buku-list-html.md#32-anatomi-tabel-html)).
 
 ## 7.1 Kode CSS
 
@@ -102,7 +102,7 @@ thead {
 ```
 
 Baris judul kolom (`<thead>`, lihat
-[dokumentasi HTML jobsheet-01](../../jobsheet-01/Dokumentasi/03-buku-list-html.md#32-anatomi-tabel-html))
+[dokumentasi HTML jobsheet-01](../../jobsheet-01/dokumentasi/03-buku-list-html.md#32-anatomi-tabel-html))
 diberi latar biru tema yang sama dengan header halaman, dengan teks
 putih — menegaskan secara visual bahwa baris ini adalah "judul kolom",
 berbeda dari baris-baris data di bawahnya.
@@ -159,7 +159,7 @@ td button {
 
 Ini gaya dasar yang berlaku untuk **kedua** tombol (Edit dan Hapus) di
 kolom "Aksi" (lihat HTML-nya di
-[dokumentasi jobsheet-01](../../jobsheet-01/Dokumentasi/03-buku-list-html.md#kolom-aksi)):
+[dokumentasi jobsheet-01](../../jobsheet-01/dokumentasi/03-buku-list-html.md#kolom-aksi)):
 
 - `border: none;` — menghapus garis bingkai/border bawaan tombol HTML
   (biasanya abu-abu 3D ala tombol Windows lama).

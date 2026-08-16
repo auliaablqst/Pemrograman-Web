@@ -39,7 +39,7 @@ try {
     $pdo->commit();
 
     $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Peminjaman berhasil dicatat.'];
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 } catch (Exception $e) {
     $pdo->rollBack();

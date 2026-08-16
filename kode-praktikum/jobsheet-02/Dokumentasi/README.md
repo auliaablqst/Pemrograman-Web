@@ -1,7 +1,7 @@
 # Dokumentasi Jobsheet 2 — CSS3 Styling Dasar
 
 Dokumentasi ini melanjutkan
-[dokumentasi jobsheet-01](../../jobsheet-01/Dokumentasi/README.md) dan
+[dokumentasi jobsheet-01](../../jobsheet-01/dokumentasi/README.md) dan
 ditujukan untuk mahasiswa yang baru belajar HTML/CSS. Jika kamu belum
 paham struktur HTML dasar (`header`, `nav`, `main`, `table`, `form`, dst.),
 sebaiknya baca dulu dokumentasi jobsheet-01 sebelum lanjut ke sini.

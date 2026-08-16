@@ -7,7 +7,7 @@ sejajar.
 
 ## 6.1 Mengingat Kembali HTML-nya
 
-Dari [dokumentasi HTML jobsheet-01](../../jobsheet-01/Dokumentasi/02-index-html.md#22-penjelasan-bagian-per-bagian),
+Dari [dokumentasi HTML jobsheet-01](../../jobsheet-01/dokumentasi/02-index-html.md#22-penjelasan-bagian-per-bagian),
 `index.html` punya struktur `<main>` berisi **2 buah `<section>`**:
 
 ```html
