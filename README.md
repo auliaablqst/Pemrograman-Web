@@ -132,12 +132,6 @@ Alternatif struktur di luar matriks 16 minggu pada bagian 5 — untuk format kel
 | 7 | Integrasi front-end/back-end penuh | jobsheet-12 | Modul peminjaman/pengembalian, transaction (`BEGIN`/`COMMIT`/`ROLLBACK`) | Peer review progress (minggu 14 lama) dipangkas jadi umpan balik singkat di akhir sesi, bukan sesi khusus |
 | 8 | Deploy, dokumentasi + **Demo Akhir (pengganti UAS)** | jobsheet-13 | Pemisahan config/kredensial, dokumentasi teknis + presentasi produk akhir | Deploy & UAS digabung jadi satu pertemuan penutup |
 
-**Konsekuensi:**
-- UTS/UAS formal hilang, digantikan dua *checkpoint* tertanam (pertemuan 3 dan 8) — cocok untuk kelas intensif, kurang cocok kalau institusi mewajibkan UTS/UAS terpisah sebagai komponen penilaian resmi.
-- Beban per pertemuan naik ±2x dari versi 16 minggu — porsi kerja mandiri di luar kelas perlu diperbesar.
-- Bobot penilaian (bagian 6) perlu skema baru untuk format ini, bukan dipakai apa adanya — misalnya: 40% tugas per-pertemuan (8×5%), 20% checkpoint pertemuan 3, 40% demo akhir pertemuan 8.
-- Pertemuan paling berisiko dipadatkan: pertemuan 6 (auth+security) dan pertemuan 4 (PHP+DB) — di versi 16 minggu masing-masing satu minggu penuh, di sini digabung padahal termasuk topik paling padat teknis.
-
 ---
 
 ## Catatan Implementasi OBE/OBA
