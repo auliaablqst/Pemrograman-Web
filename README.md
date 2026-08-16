@@ -131,8 +131,8 @@ Alternatif struktur di luar matriks 16 minggu pada bagian 5 — untuk format kel
 | 6 | Autentikasi & sesi + Keamanan web dasar | jobsheet-10 + 11 | Login/register/logout, password hashing + SQLi, XSS, CSRF, session fixation | Padat — keamanan dibahas sambil menempel langsung ke kode auth yang baru dibuat, bukan sesi audit terpisah |
 | 7 | Integrasi front-end/back-end penuh | jobsheet-12 | Modul peminjaman/pengembalian, transaction (`BEGIN`/`COMMIT`/`ROLLBACK`) | Peer review progress (minggu 14 lama) dipangkas jadi umpan balik singkat di akhir sesi, bukan sesi khusus |
 | 8 | Deploy, dokumentasi + **Demo Akhir (UTS)** | jobsheet-13 | Pemisahan config/kredensial, dokumentasi teknis + presentasi produk akhir | Deploy & UTS digabung jadi satu pertemuan penutup Materi |
-| 9-15 | PBL |
-| 16 | **Demo PBL** |
+| 9-15 | PBL |PBL| PBL |PBL
+| 16 | **Demo PBL** | **Demo PBL**| **Demo PBL** | **Demo PBL** |
 
 
 ---
