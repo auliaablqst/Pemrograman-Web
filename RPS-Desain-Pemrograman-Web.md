@@ -117,6 +117,26 @@
 
 ---
 
+## Lampiran: Opsi Pemadatan 8 Pertemuan (Kelas Intensif)
+
+Alternatif struktur di luar matriks 16 minggu pada bagian 5 — untuk format kelas yang lebih singkat (mis. kelas intensif/bootcamp), bukan pengganti RPS 16 minggu reguler. Menggabungkan pasangan topik yang berdekatan secara konsep supaya proyek SIMPUS-Mini tetap utuh dari awal sampai akhir.
+
+| Pert. | Sub-CPMK Gabungan | Jobsheet yang Dipakai | Materi Inti | Materi Yang Dipadatkan |
+|---|---|---|---|---|
+| 1 | Struktur HTML5 semantic + Styling dasar CSS3 | jobsheet-01 + 02 | Tag semantic, form, tabel + CSS selector, box model, Flexbox, Grid | Intro tools (minggu 1 lama) jadi 15 menit pembuka, bukan pertemuan sendiri |
+| 2 | Tampilan responsif + Rancangan UI/UX | jobsheet-03 + 04 | Media query, mobile-first, hamburger menu + wireframe & user flow | Wireframe dibuat lebih ringkas (mahasiswa pakai template, bukan dari nol) |
+| 3 | DOM/event JS + AJAX/fetch & JSON | jobsheet-05 + 06 | Event handling, validasi client-side + fetch API, JSON, async/await | Jadi evaluasi front-end |
+| 4 | PHP dasar & form handling + Koneksi PostgreSQL | jobsheet-07 + 08 | Sintaks PHP, superglobal + PDO, ERD, query dasar | Sesi instalasi Laragon/PostgreSQL disarankan jadi tugas mandiri sebelum pertemuan (flipped), bukan makan waktu tatap muka |
+| 5 | CRUD pada proyek | jobsheet-09 | Edit/hapus, prepared statement, pagination & pencarian server-side | Berdiri sendiri — CRUD butuh waktu penuh, tidak digabung |
+| 6 | Autentikasi & sesi + Keamanan web dasar | jobsheet-10 + 11 | Login/register/logout, password hashing + SQLi, XSS, CSRF, session fixation | Padat — keamanan dibahas sambil menempel langsung ke kode auth yang baru dibuat, bukan sesi audit terpisah |
+| 7 | Integrasi front-end/back-end penuh | jobsheet-12 | Modul peminjaman/pengembalian, transaction (`BEGIN`/`COMMIT`/`ROLLBACK`) | Peer review progress (minggu 14 lama) dipangkas jadi umpan balik singkat di akhir sesi, bukan sesi khusus |
+| 8 | Deploy, dokumentasi + **Demo Akhir (UTS)** | jobsheet-13 | Pemisahan config/kredensial, dokumentasi teknis + presentasi produk akhir | Deploy & UTS digabung jadi satu pertemuan penutup Materi |
+| 9-15 | PBL |PBL| PBL |PBL
+| 16 | **Demo PBL** | **Demo PBL**| **Demo PBL** | **Demo PBL** |
+
+
+---
+
 ## Catatan Implementasi OBE/OBA
 
 - **OBE**: setiap Sub-CPMK mingguan diturunkan langsung dari CPMK dan CPL agar keterkaitan *learning outcome* → aktivitas → penilaian terjaga (*constructive alignment*).
