@@ -43,6 +43,8 @@ ini secara berurutan:
    psql -d simpus_mini -f sql/03_peminjaman.sql
    php -S localhost:8000
    ```
+   (atau lewat Laragon — lihat [README.md](../README.md) jobsheet ini
+   untuk opsi vhost-nya)
 2. **Registrasi** petugas baru → **Login**.
 3. **Tambah Buku** (kalau belum ada) & **Tambah Anggota** (kalau belum
    ada).

@@ -39,7 +39,7 @@
 
 ## 7.3 Cara Mencoba Sendiri
 
-1. Jalankan `php -S localhost:8000` (pastikan database dari
+1. Jalankan `php -S localhost:8000` atau lewat Laragon (pastikan database dari
    [dokumentasi jobsheet-08](../../jobsheet-08/Dokumentasi/03-persiapan-database.md)
    sudah siap), buka `http://localhost:8000/index.php`.
 2. Ikuti siklus lengkap dari [README.md](../README.md) jobsheet ini:

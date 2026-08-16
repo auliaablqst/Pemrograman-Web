@@ -108,10 +108,14 @@ Sesuai [README.md](../README.md) jobsheet ini, jalankan:
 php -S localhost:8000
 ```
 
-**Perhatikan baik-baik:** perintah ini harus dijalankan **dari dalam
-folder `jobsheet-07/`** (bukan dari folder lain) — alasannya berkaitan
-dengan **root-relative path** yang baru diperkenalkan di jobsheet ini,
-dijelaskan detail di [bab 2 §2.3](02-includes-header-footer.md#23-root-relative-path-yang-baru).
+Jalankan perintah ini **dari dalam folder `jobsheet-07/`** supaya
+`http://localhost:8000/` memetakan langsung ke folder ini. Path
+CSS/JS/menu di jobsheet ini dihitung **relatif otomatis** terhadap
+folder proyek (bukan digantung ke akar server) — dijelaskan detail di
+[bab 2 §2.3](02-includes-header-footer.md#23-path-relatif-otomatis-di-includesheaderphp),
+jadi selain lewat `php -S`, proyek ini juga tetap bisa dibuka lewat
+Laragon meskipun diakses bersarang di dalam beberapa folder (misalnya
+`http://dp2026.test/kode-praktikum/jobsheet-07/`).
 Setelah server berjalan, buka `http://localhost:8000/index.php` — mirip
 dengan cara menjalankan jobsheet-06 (ingat
 [dokumentasi jobsheet-06 §7.3](../../jobsheet-06/Dokumentasi/07-menjalankan-dengan-server-lokal.md#73-solusi-jalankan-lewat-server-lokal)),

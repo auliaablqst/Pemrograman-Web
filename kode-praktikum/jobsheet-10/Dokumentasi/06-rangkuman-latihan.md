@@ -40,7 +40,7 @@
    ```bash
    psql -d simpus_mini -f sql/02_users.sql
    ```
-2. Jalankan `php -S localhost:8000`, buka
+2. Jalankan `php -S localhost:8000` (atau lewat Laragon), buka
    `http://localhost:8000/buku/tambah.php` **langsung** tanpa login —
    amati kamu diarahkan ke halaman Login (bukti guard `auth.php`
    bekerja).

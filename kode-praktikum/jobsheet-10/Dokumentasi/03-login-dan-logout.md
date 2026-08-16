@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (isset($_SESSION['user_id'])) {
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -37,7 +37,7 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['nama'] = $user['nama'];
     $_SESSION['role'] = $user['role'];
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -114,7 +114,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 session_destroy();
-header('Location: /auth/login.php');
+header('Location: login.php');
 exit;
 ```
 
@@ -127,7 +127,10 @@ exit;
   `includes/auth.php`, [bab 4](04-guard-auth-php.md)) akan kembali
   bernilai `false`.
 - Setelah sesi dihancurkan, pengguna langsung diarahkan ke halaman
-  Login — alur yang masuk akal setelah logout.
+  Login — alur yang masuk akal setelah logout. Target-nya cukup
+  `login.php` saja (bukan `/auth/login.php` atau `../auth/login.php`)
+  karena `logout.php` **sendiri** sudah berada di dalam folder `auth/`
+  — `login.php` di situ merujuk ke file tetangga di folder yang sama.
 
 ## 3.4 Alur Lengkap: Registrasi → Login → Logout
 

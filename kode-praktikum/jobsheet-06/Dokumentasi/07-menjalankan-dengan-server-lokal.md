@@ -55,8 +55,16 @@ Server**, lalu klik kanan file `index.html` → "Open with Live Server".
 Ini akan otomatis menjalankan server lokal dan membuka browser untukmu,
 tanpa perlu mengetik perintah apa pun di terminal.
 
-Kedua cara ini punya tujuan yang sama: membuat halaman diakses lewat
-alamat `http://localhost:...` (bukan `file://...`), sehingga `fetch()`
+**Cara 3 — Laragon (Apache):** kalau kamu memakai Laragon, cukup taruh
+folder proyek di dalam `C:\laragon\www\`, nyalakan Apache lewat menu
+Laragon, lalu buka `http://<nama-domain>.test/.../jobsheet-06/index.html`
+di browser (nama domainnya otomatis dibuat Laragon dari nama folder
+proyekmu). Semua path `fetch()` di jobsheet ini memakai path relatif
+biasa (`../data/buku.json`, dst.), jadi tetap benar diakses dari
+kedalaman folder mana pun.
+
+Ketiga cara ini punya tujuan yang sama: membuat halaman diakses lewat
+alamat `http://...` (bukan `file://...`), sehingga `fetch()`
 diizinkan mengambil file JSON di folder yang sama.
 
 ## 7.4 Kenapa Ini Baru Muncul Sekarang, Bukan di Jobsheet Sebelumnya?

@@ -38,7 +38,7 @@
 1. Selesaikan **semua** langkah persiapan di
    [bab 3](03-persiapan-database.md) — ini **wajib** sebelum melangkah
    lebih jauh.
-2. Jalankan `php -S localhost:8000`, buka `http://localhost:8000/index.php` —
+2. Jalankan `php -S localhost:8000` (atau lewat Laragon), buka `http://localhost:8000/index.php` —
    kartu statistik seharusnya menampilkan `0` untuk Total Buku dan Total
    Anggota (database baru dibuat, belum ada data).
 3. Tambahkan satu buku lewat `buku/tambah.php`. Amati kamu diarahkan ke

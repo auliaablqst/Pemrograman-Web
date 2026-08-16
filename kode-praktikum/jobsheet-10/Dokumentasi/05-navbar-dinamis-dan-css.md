@@ -19,25 +19,34 @@ $sudahLogin = isset($_SESSION['user_id']);
         <button type="button" id="nav-toggle-btn" class="nav-toggle-label" aria-label="Menu">&#9776;</button>
         <nav>
             <ul>
-                <li><a href="/index.php">Beranda</a></li>
-                <li><a href="/buku/list.php">Daftar Buku</a></li>
+                <li><a href="<?php echo $base; ?>index.php">Beranda</a></li>
+                <li><a href="<?php echo $base; ?>buku/list.php">Daftar Buku</a></li>
                 <?php if ($sudahLogin): ?>
-                <li><a href="/buku/tambah.php">Tambah Buku</a></li>
-                <li><a href="/anggota/list.php">Daftar Anggota</a></li>
-                <li><a href="/anggota/tambah.php">Tambah Anggota</a></li>
+                <li><a href="<?php echo $base; ?>buku/tambah.php">Tambah Buku</a></li>
+                <li><a href="<?php echo $base; ?>anggota/list.php">Daftar Anggota</a></li>
+                <li><a href="<?php echo $base; ?>anggota/tambah.php">Tambah Anggota</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
         <div class="auth-status">
             <?php if ($sudahLogin): ?>
                 <span><?php echo $_SESSION['nama']; ?></span>
-                <a href="/auth/logout.php">Logout</a>
+                <a href="<?php echo $base; ?>auth/logout.php">Logout</a>
             <?php else: ?>
-                <a href="/auth/login.php">Login</a>
+                <a href="<?php echo $base; ?>auth/login.php">Login</a>
             <?php endif; ?>
         </div>
     </header>
 ```
+
+Perhatikan setiap `href` diawali `<?php echo $base; ?>` (tanpa garis
+miring `/` di depan sisa path-nya) — `$base` inilah variabel yang
+dihitung otomatis di baris-baris paling atas `header.php`, dijelaskan
+lengkap di
+[dokumentasi jobsheet-07 §2.3](../../jobsheet-07/Dokumentasi/02-includes-header-footer.md#23-path-relatif-otomatis-di-includesheaderphp).
+Kalau kamu belum baca bab itu, sebaiknya baca dulu sebelum lanjut —
+bab ini (navbar dinamis) berfokus ke bagian **login/logout**-nya saja,
+bukan mengulang penjelasan `$base`.
 
 ## 5.2 `session_start()` yang Diamankan
 
@@ -69,12 +78,12 @@ seperti ini membuat kode lebih ringkas dan lebih mudah dibaca.
 ## 5.4 Menu yang Muncul-Hilang: `<?php if ($sudahLogin): ?>`
 
 ```php
-<li><a href="/index.php">Beranda</a></li>
-<li><a href="/buku/list.php">Daftar Buku</a></li>
+<li><a href="<?php echo $base; ?>index.php">Beranda</a></li>
+<li><a href="<?php echo $base; ?>buku/list.php">Daftar Buku</a></li>
 <?php if ($sudahLogin): ?>
-<li><a href="/buku/tambah.php">Tambah Buku</a></li>
-<li><a href="/anggota/list.php">Daftar Anggota</a></li>
-<li><a href="/anggota/tambah.php">Tambah Anggota</a></li>
+<li><a href="<?php echo $base; ?>buku/tambah.php">Tambah Buku</a></li>
+<li><a href="<?php echo $base; ?>anggota/list.php">Daftar Anggota</a></li>
+<li><a href="<?php echo $base; ?>anggota/tambah.php">Tambah Anggota</a></li>
 <?php endif; ?>
 ```
 
@@ -102,9 +111,9 @@ pun, `auth.php` tetap akan mengalihkannya ke Login.
 <div class="auth-status">
     <?php if ($sudahLogin): ?>
         <span><?php echo $_SESSION['nama']; ?></span>
-        <a href="/auth/logout.php">Logout</a>
+        <a href="<?php echo $base; ?>auth/logout.php">Logout</a>
     <?php else: ?>
-        <a href="/auth/login.php">Login</a>
+        <a href="<?php echo $base; ?>auth/login.php">Login</a>
     <?php endif; ?>
 </div>
 ```

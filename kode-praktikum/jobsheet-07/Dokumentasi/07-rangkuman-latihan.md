@@ -5,7 +5,7 @@
 | Bagian | Konsep yang Dipelajari |
 |---|---|
 | [Konsep Dasar PHP](01-konsep-dasar-php.md) | Server-side vs client-side, tag `<?php ?>`, variabel `$`, `echo`, superglobal, `??` |
-| [Includes Header/Footer](02-includes-header-footer.md) | `include`, `__DIR__`, root-relative path, sintaks alternatif `if/foreach: endif/endforeach` |
+| [Includes Header/Footer](02-includes-header-footer.md) | `include`, `__DIR__`, path relatif otomatis (`$base`), sintaks alternatif `if/foreach: endif/endforeach` |
 | [Session & Alur Data](03-session-dan-alur-data.md) | `session_start()`, `$_SESSION` sebagai "keranjang" data antar halaman, alur form → proses → tabel |
 | [Proses Tambah & Validasi Server](04-proses-tambah-validasi-server.md) | `$_POST`, `is_numeric`, `header('Location: ...')` + `exit`, type casting `(int)` |
 | [List.php & Flash Message](05-list-php-render-dan-flash.md) | `unset()` untuk pesan sekali-pakai, `foreach` PHP, rendering di server vs browser |
@@ -38,14 +38,15 @@
 
 ## 7.3 Cara Mencoba Sendiri
 
-1. **Jalankan server dari folder yang benar** (ingat
+1. **Jalankan server-nya** (ingat
    [bab 1 §1.7](01-konsep-dasar-php.md#17-menjalankan-php-butuh-server-sungguhan)
-   dan [bab 2 §2.3](02-includes-header-footer.md#23-root-relative-path-yang-baru) —
-   ini **wajib** dari dalam folder `jobsheet-07/`):
+   dan [bab 2 §2.3](02-includes-header-footer.md#23-path-relatif-otomatis-di-includesheaderphp) —
+   path-nya sudah relatif otomatis, jadi tidak wajib dari folder tertentu):
    ```bash
    php -S localhost:8000
    ```
-   Buka `http://localhost:8000/index.php`.
+   Buka `http://localhost:8000/index.php` (atau lewat Laragon, lihat
+   [README.md](../README.md) untuk opsi vhost-nya).
 2. Klik "Tambah Buku", isi form dengan data valid, klik "Simpan" —
    amati kamu diarahkan ke `list.php` dengan pesan hijau "Buku berhasil
    ditambahkan." di atas tabel, dan buku barumu muncul di baris

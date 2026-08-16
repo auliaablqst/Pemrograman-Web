@@ -29,7 +29,7 @@
    lain), pasang listener di elemen leluhur yang stabil, bukan di
    elemen itu sendiri ([bab 6](06-js-event-delegation-hapus.md)).
 5. **`fetch()` butuh server, bukan `file://`** — ingat menjalankan lewat
-   `php -S localhost:8000` atau Live Server setiap kali mencoba
+   `php -S localhost:8000`, Live Server, atau Laragon setiap kali mencoba
    jobsheet ini ([bab 7](07-menjalankan-dengan-server-lokal.md)).
 
 ## 8.3 Cara Mencoba Sendiri

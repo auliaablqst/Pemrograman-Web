@@ -70,7 +70,7 @@ penyambungan awal. Detail cara memakainya di jobsheet ini dibahas di
 ## 1.5 Kenapa Ada Langkah "Persiapan" Sebelum Menjalankan Jobsheet Ini?
 
 Berbeda dari jobsheet-01 sampai jobsheet-07 yang langsung bisa dicoba
-(paling banter perlu `php -S localhost:8000`), jobsheet ini butuh
+(paling banter perlu `php -S localhost:8000` atau Laragon), jobsheet ini butuh
 **PostgreSQL sungguhan terpasang dan berjalan** di komputermu, plus
 sebuah database baru yang **harus dibuat dan diisi skemanya lebih
 dulu** sebelum aplikasi PHP bisa terhubung ke mana pun. Langkah-langkah

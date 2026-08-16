@@ -46,7 +46,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (isset($_SESSION['user_id'])) {
-    header('Location: /index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -59,11 +59,19 @@ include __DIR__ . '/../includes/header.php';
   perlu diperiksa dulu (bukan langsung panggil `session_start()` saja
   seperti di jobsheet-07/08/09)? Dijelaskan alasannya di
   [bab 4 §4.4](04-guard-auth-php.md#44-kenapa-session_status-diperiksa-dulu).
-- **`if (isset($_SESSION['user_id'])) { header('Location: /index.php'); exit; }`** —
+- **`if (isset($_SESSION['user_id'])) { header('Location: ../index.php'); exit; }`** —
   pola baru: kalau pengguna **sudah login**, halaman Registrasi (dan
   Login, lihat [bab 3](03-login-dan-logout.md)) langsung mengalihkannya
   ke Beranda. Masuk akal — tidak ada gunanya menampilkan form
-  registrasi/login ke seseorang yang sudah punya sesi aktif.
+  registrasi/login ke seseorang yang sudah punya sesi aktif. Perhatikan
+  target-nya `../index.php`, bukan `/index.php` — karena `register.php`
+  berada satu folder di dalam (`auth/`), path relatif biasa (`../`)
+  sudah cukup untuk sampai ke `index.php` di root proyek, tidak perlu
+  variabel `$base` seperti di `includes/header.php` (ingat
+  [dokumentasi jobsheet-07 §2.3](../../jobsheet-07/Dokumentasi/02-includes-header-footer.md#23-path-relatif-otomatis-di-includesheaderphp)
+  — `$base` dipakai di situ karena `header.php` dipakai bersama oleh
+  halaman di kedalaman berbeda-beda, sedangkan `header('Location: ...')`
+  di sini hanya perlu berlaku untuk file ini sendiri).
 
 Sisa halaman ini adalah form HTML biasa, mengikuti pola `<label>` +
 `<input>` yang sudah sangat kamu kenal sejak

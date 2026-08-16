@@ -168,7 +168,9 @@ Coba salah satu dari kemungkinan berikut (ketik, lalu tekan Enter):
 
 Kalau salah satu berhasil (muncul prompt `postgres=#`), lanjut ke
 langkah berikut. **Kalau semuanya gagal** (`password authentication
-failed`), ikuti [§8.9](#89-jalan-pintas-kalau-lupatidak-tahu-password-postgres)
+failed`), dan port `5432` sudah dipastikan **bukan** dipakai instalasi
+lain ([§8.9](#89-kalau-service-postgresql-laragon-gagal-start-bentrok-port-5432)),
+ikuti [§8.10](#810-jalan-pintas-kalau-lupatidak-tahu-password-postgres)
 untuk mengatur ulang password secara paksa.
 
 **Setelah berhasil login** (terlihat prompt `postgres=#`), ketik persis:
@@ -205,7 +207,69 @@ psql -U postgres -d simpus_mini -f sql/01_buku_anggota.sql
 Kalau berhasil, akan muncul dua baris `CREATE TABLE` — persis seperti
 yang dibahas di [bab 3 §3.3](03-persiapan-database.md#33-langkah-3-menjalankan-skema).
 
-## 8.9 Jalan Pintas Kalau Lupa/Tidak Tahu Password `postgres`
+## 8.9 Kalau Service PostgreSQL Laragon Gagal Start (Bentrok Port 5432)
+
+Kadang muncul dialog error **"waiting for server to start...."** saat
+klik **Start All**/**Start** di Laragon, padahal langkah-langkah di atas
+sudah diikuti persis. Ini **bukan berarti** ada yang salah dengan
+instalasi PostgreSQL-mu — penyebab paling umum adalah **program lain
+sudah lebih dulu memakai port `5432`**, sehingga PostgreSQL bawaan
+Laragon tidak kebagian port untuk "mendengarkan" koneksi (ingat dari
+[§8.4](#84-menjalankan-service-postgresql), PostgreSQL selalu memakai
+port ini secara default). Penyebab yang paling sering terjadi:
+komputer yang sama juga pernah dipasangi PostgreSQL **secara terpisah**
+(misalnya lewat installer resmi dari postgresql.org, bukan lewat
+Laragon) yang otomatis menyala sebagai *Windows Service* setiap kali
+komputer dinyalakan — dua-duanya sama-sama berebut port `5432`, dan
+yang menyala **lebih dulu** yang menang.
+
+**Cara memastikan ini penyebabnya** — buka **Command Prompt** atau
+**PowerShell** (tidak harus Terminal Laragon untuk langkah ini), ketik:
+```powershell
+netstat -ano | findstr ":5432"
+```
+Kalau muncul baris `LISTENING` dengan sebuah angka PID (*Process ID*)
+di ujung kanan, cari tahu proses apa itu:
+```powershell
+Get-Process -Id <PID_yang_muncul>
+```
+Kalau hasilnya `postgres` tapi kamu **yakin** belum pernah menjalankan
+PostgreSQL Laragon-mu hari itu, kemungkinan besar itu instalasi
+PostgreSQL lain yang berjalan otomatis sebagai *service*.
+
+**Cara mengatasinya** — pilih salah satu:
+
+1. **Hentikan service PostgreSQL yang lain** (kalau memang tidak
+   dipakai untuk proyek lain). Buka PowerShell **sebagai Administrator**
+   (klik kanan ikon PowerShell → "Run as administrator" — wajib, kalau
+   tidak akan muncul error "Access is denied"), lalu:
+   ```powershell
+   Get-Service | Where-Object { $_.DisplayName -match "PostgreSQL" }
+   ```
+   Ini menampilkan **semua** service PostgreSQL yang terpasang di
+   komputer (biasanya lebih dari satu kalau memang ada bentrok). Cari
+   nama service yang **bukan** milik Laragon (biasanya bernama seperti
+   `postgresql-x64-<versi>`), lalu:
+   ```powershell
+   Stop-Service -Name "<nama-service>" -Force
+   Set-Service -Name "<nama-service>" -StartupType Manual
+   ```
+   `StartupType Manual` mencegah service itu otomatis menyala lagi
+   setiap kali komputer di-restart (kalau dibiarkan `Automatic`, port
+   `5432` akan kembali direbut lagi di restart berikutnya) — service-nya
+   sendiri **tidak dihapus**, cuma tidak otomatis jalan lagi.
+2. **Atau, biarkan service lain itu tetap jalan**, dan pindahkan
+   PostgreSQL Laragon ke port lain (misalnya `5433`) lewat
+   `postgresql.conf` di folder data-nya (`C:\laragon\data\postgresql-XX\`),
+   lalu sesuaikan `$port` di `includes/koneksi.php` supaya cocok. Opsi
+   ini lebih rumit dan **hanya disarankan** kalau service lain itu
+   memang masih dipakai untuk keperluan lain.
+
+Setelah salah satu langkah di atas selesai, klik **Stop** lalu
+**Start All** lagi di Laragon — indikator PostgreSQL seharusnya
+berubah hijau tanpa dialog error.
+
+## 8.10 Jalan Pintas Kalau Lupa/Tidak Tahu Password `postgres`
 
 Kalau di [§8.7](#87-login-ke-postgresql--menyamakan-password-dengan-koneksiphp)
 semua kemungkinan password gagal, kamu bisa **memaksa** PostgreSQL
@@ -242,15 +306,16 @@ membutuhkan password (tidak dibiarkan `trust` selamanya) — langkah 7-8
 **penting** untuk tidak dilewati, supaya PostgreSQL tidak menerima
 sembarang koneksi begitu saja.
 
-## 8.10 Ringkasan Checklist
+## 8.11 Ringkasan Checklist
 
-Sebelum menjalankan `php -S localhost:8000` di folder jobsheet-08,
-pastikan semua ini sudah "centang":
+Sebelum menjalankan `php -S localhost:8000` (atau lewat Laragon) di
+folder jobsheet-08, pastikan semua ini sudah "centang":
 
 - [ ] Laragon terpasang dan terbuka.
 - [ ] PostgreSQL sudah ditambahkan lewat Quick Add ([§8.3](#83-menambahkan-postgresql-lewat-quick-add)).
-- [ ] Indikator PostgreSQL di daftar service Laragon berwarna **hijau**
-      ([§8.4](#84-menjalankan-service-postgresql)).
+- [ ] Indikator PostgreSQL di daftar service Laragon berwarna **hijau**,
+      tanpa dialog error "waiting for server to start...." ([§8.4](#84-menjalankan-service-postgresql);
+      kalau muncul error itu, kemungkinan bentrok port — lihat [§8.9](#89-kalau-service-postgresql-laragon-gagal-start-bentrok-port-5432)).
 - [ ] `php -m | findstr pgsql` menampilkan `pdo_pgsql` dan `pgsql`
       ([§8.6](#86-mengaktifkan-ekstensi-php-pdo_pgsql)).
 - [ ] `psql -U postgres` bisa login, dan password sudah ditetapkan ke

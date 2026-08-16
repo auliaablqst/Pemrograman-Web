@@ -19,14 +19,14 @@ sehingga menekan "Simpan" tidak melakukan apa-apa. Sekarang:
   dipakai untuk pencarian). `POST` lebih cocok untuk form yang
   menambah/mengubah data, seperti menambah buku baru.
 - **`action="proses_tambah.php"`** — menentukan **ke mana** data
-  dikirim ketika form di-submit. Perhatikan ini path **relatif**
-  (bukan root-relative seperti menu navigasi di
-  [bab 2 §2.3](02-includes-header-footer.md#23-root-relative-path-yang-baru)) —
+  dikirim ketika form di-submit. Perhatikan ini path **relatif polos**
+  (tanpa prefix `$base` seperti menu navigasi di
+  [bab 2 §2.3](02-includes-header-footer.md#23-path-relatif-otomatis-di-includesheaderphp)) —
   karena `proses_tambah.php` **selalu** berada tepat di folder yang
   sama dengan `tambah.php` yang memanggilnya (`buku/tambah.php` →
   `buku/proses_tambah.php`, `anggota/tambah.php` →
   `anggota/proses_tambah.php`), jadi path relatif sederhana sudah cukup
-  di sini, tidak perlu `__DIR__` atau root-relative path.
+  di sini, tidak perlu `__DIR__` atau perhitungan `$base`.
 
 ## 4.2 Menerima Data Form: `$_POST`
 

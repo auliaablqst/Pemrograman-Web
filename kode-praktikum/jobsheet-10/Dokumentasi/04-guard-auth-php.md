@@ -16,10 +16,19 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /auth/login.php');
+    header('Location: ../auth/login.php');
     exit;
 }
 ```
+
+`includes/auth.php` selalu di-`require` dari halaman yang **satu
+folder lebih dalam** dari root proyek (`buku/`, `anggota/`, lihat
+[§4.7](#47-halaman-mana-saja-yang-memakai-guard-ini)), jadi
+`../auth/login.php` (naik satu folder, lalu turun ke `auth/`) selalu
+tepat sasaran — beda dengan `includes/header.php` yang butuh
+perhitungan `$base` dinamis karena dipakai bersama oleh halaman di
+kedalaman yang **berbeda-beda** (ingat
+[dokumentasi jobsheet-07 §2.3](../../jobsheet-07/Dokumentasi/02-includes-header-footer.md#23-path-relatif-otomatis-di-includesheaderphp)).
 
 ## 4.2 Cara Memakainya di Halaman Lain
 
@@ -44,7 +53,7 @@ Ingat dari [dokumentasi jobsheet-07 §4.4](../../jobsheet-07/Dokumentasi/04-pros
 apa pun** yang terkirim ke browser sebelumnya. Kalau
 `include header.php` dipanggil **lebih dulu** — yang langsung mulai
 mencetak `<!DOCTYPE html>`, `<head>`, dst. — maka saat `auth.php`
-mencoba memanggil `header('Location: /auth/login.php')` setelahnya,
+mencoba memanggil `header('Location: ../auth/login.php')` setelahnya,
 perintah itu akan **gagal** (biasanya memicu peringatan PHP "headers
 already sent") karena browser sudah mulai menerima sebagian halaman.
 
@@ -96,7 +105,7 @@ panggilan-panggilan berikutnya di file lain akan melihat status sudah
 
 ```php
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /auth/login.php');
+    header('Location: ../auth/login.php');
     exit;
 }
 ```
@@ -115,7 +124,7 @@ yang sudah kamu kenal sejak
 
 Ingat catatan penting di [README.md](../README.md) jobsheet ini:
 *"Guard `auth.php` sudah diverifikasi mengembalikan HTTP 302 ke
-`/auth/login.php` untuk halaman terkunci meski database belum
+`../auth/login.php` untuk halaman terkunci meski database belum
 tersambung."* Perhatikan kode `auth.php` di [§4.1](#41-kode-lengkap)
 **sama sekali tidak menyentuh** `$pdo` atau memanggil `koneksi.php`
 apa pun — ia **hanya** memeriksa `$_SESSION`, yang sepenuhnya dikelola

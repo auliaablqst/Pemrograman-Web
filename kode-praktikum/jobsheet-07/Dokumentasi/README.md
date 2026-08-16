@@ -35,7 +35,11 @@ Sesuai [README.md](../README.md) jobsheet ini:
 1. Semua halaman `.html` diubah jadi **`.php`**.
 2. Dua file baru, `includes/header.php` dan `includes/footer.php`,
    menghindari duplikasi navbar/footer lewat `include`.
-3. Path CSS/JS/menu berubah jadi **root-relative** (`/assets/css/style.css`).
+3. Path CSS/JS/menu di `includes/header.php`/`footer.php` dihitung
+   **relatif otomatis** lewat variabel `$base` (lihat
+   [bab 2 §2.3](02-includes-header-footer.md#23-path-relatif-otomatis-di-includesheaderphp)),
+   supaya tetap benar dipakai bersama oleh halaman di kedalaman folder
+   yang berbeda-beda.
 4. Form Tambah Buku/Anggota kini benar-benar **mengirim data** ke
    `proses_tambah.php` (bukan lagi form kosong tanpa `action` seperti
    sejak jobsheet-01).

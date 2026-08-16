@@ -1,6 +1,8 @@
 # Manual Pengguna — SIMPUS-Mini
 
-> Catatan: karena disusun di luar environment yang punya PostgreSQL aktif, dokumen ini berisi langkah bertekstur lengkap sebagai pengganti tangkapan layar. Saat dijalankan di lab (dengan PostgreSQL & PHP aktif), sisipkan screenshot nyata pada tiap langkah bertanda **[Screenshot]**.
+> Catatan: dokumen ini berisi langkah bertekstur lengkap sebagai pengganti tangkapan layar. Sisipkan screenshot nyata pada tiap langkah bertanda **[Screenshot]** saat didemokan.
+>
+> URL contoh di bawah pakai `http://localhost:8000/...` (PHP built-in server). Kalau menjalankan lewat Laragon, sesuaikan jadi `http://jobsheet13.test/...` (virtual host langsung) atau `http://dp2026.test/kode-praktikum/jobsheet-13/...` (bersarang di bawah domain proyek) — path selanjutnya di tiap langkah sama persis, tinggal ganti bagian domainnya saja.
 
 ## 1. Registrasi & Login Petugas
 
