@@ -11,9 +11,12 @@ Sub-CPMK: Menerapkan prinsip keamanan web dasar.
 - Tambah `docs/security-checklist.md` — dokumen audit lengkap dengan bukti before/after per kerentanan.
 
 ## Cara menjalankan
+**Opsi 1 — PHP built-in server**:
 ```bash
 php -S localhost:8000
 ```
+
+**Opsi 2 — Laragon (Apache)**: lewat virtual host langsung ke folder `jobsheet-11/` (mis. `http://jobsheet11.test/`), atau bersarang di bawah domain proyek (mis. `http://dp2026.test/kode-praktikum/jobsheet-11/`) — path CSS/JS/link/redirect login sudah relatif otomatis (lihat `includes/header.php` & `includes/auth.php`), jadi keduanya jalan.
 
 ## Cara menguji
 - **CSRF**: login, lalu coba kirim `curl -X POST http://localhost:8000/buku/proses_tambah.php -d "judul=x"` tanpa `csrf_token` → harus mendapat HTTP 403.

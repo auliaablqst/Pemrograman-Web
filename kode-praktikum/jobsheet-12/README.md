@@ -14,8 +14,13 @@ Sub-CPMK: Mengintegrasikan front-end dan back-end proyek secara utuh.
 ## Cara menjalankan
 ```bash
 psql -d simpus_mini -f sql/03_peminjaman.sql
+```
+**Opsi 1 — PHP built-in server**:
+```bash
 php -S localhost:8000
 ```
+
+**Opsi 2 — Laragon (Apache)**: lewat virtual host langsung ke folder `jobsheet-12/` (mis. `http://jobsheet12.test/`), atau bersarang di bawah domain proyek (mis. `http://dp2026.test/kode-praktikum/jobsheet-12/`) — path CSS/JS/link/redirect login sudah relatif otomatis (lihat `includes/header.php` & `includes/auth.php`), jadi keduanya jalan.
 
 ## Pengujian end-to-end yang disarankan
 Registrasi petugas → Login → Tambah Buku & Anggota → Peminjaman Baru → cek stok buku berkurang di Daftar Buku → cek kartu "Sedang Dipinjam" di Beranda bertambah → Pengembalian → cek stok kembali bertambah dan transaksi hilang dari daftar aktif → Riwayat (pilih anggota) → transaksi muncul berstatus "Selesai" → Logout.

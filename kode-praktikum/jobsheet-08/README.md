@@ -22,10 +22,13 @@ Sub-CPMK: Menghubungkan aplikasi dengan basis data PostgreSQL.
 4. Sesuaikan kredensial di `includes/koneksi.php` (`$user`, `$pass`) dengan environment lokal.
 
 ## Cara menjalankan
+**Opsi 1 — PHP built-in server**:
 ```bash
 php -S localhost:8000
 ```
 Buka `http://localhost:8000/index.php`.
+
+**Opsi 2 — Laragon (Apache)**: lewat virtual host langsung ke folder `jobsheet-08/` (mis. `http://jobsheet08.test/`), atau bersarang di bawah domain proyek (mis. `http://dp2026.test/kode-praktikum/jobsheet-08/`) — path CSS/JS/link sudah relatif otomatis (lihat `includes/header.php`), jadi keduanya jalan.
 
 ## Catatan
 - Data yang diinput sekarang **persisten** — coba tutup-buka browser, data tetap ada (beda dengan Jobsheet 7 yang hilang saat sesi berakhir).

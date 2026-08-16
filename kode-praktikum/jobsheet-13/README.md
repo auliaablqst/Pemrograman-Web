@@ -51,11 +51,13 @@ kategori
    DB_HOST=127.0.0.1 DB_NAME=simpus_mini DB_USER=produser DB_PASS=rahasia php -S localhost:8000
    ```
    Jangan mengubah nilai default di `includes/config.php` menjadi kredensial asli lalu meng-commit-nya ke repository publik.
-4. **Jalankan** (root-relative path pada `includes/header.php` mengharuskan server dijalankan dari root folder ini):
-   ```bash
-   php -S localhost:8000
-   ```
-5. Buka `http://localhost:8000/index.php`, registrasi akun petugas pertama lewat `/auth/register.php`.
+4. **Jalankan** — path CSS/JS/link/redirect login dihitung relatif otomatis di `includes/header.php` & `includes/auth.php` berdasarkan kedalaman folder halaman, jadi tidak lagi terikat harus dijalankan dari root server:
+   - **Opsi 1 — PHP built-in server**:
+     ```bash
+     php -S localhost:8000
+     ```
+   - **Opsi 2 — Laragon (Apache)**: lewat virtual host langsung ke folder `jobsheet-13/` (mis. `http://jobsheet13.test/`), atau bersarang di bawah domain proyek (mis. `http://dp2026.test/kode-praktikum/jobsheet-13/`) — dua-duanya jalan.
+5. Buka `http://localhost:8000/index.php` (atau URL Laragon yang dipakai), registrasi akun petugas pertama lewat halaman `auth/register.php`.
 
 ## Struktur Folder
 
@@ -76,7 +78,8 @@ jobsheet-13/
 - [`docs/wireframe.md`](docs/wireframe.md) — rancangan UX (Jobsheet 4)
 - [`docs/security-checklist.md`](docs/security-checklist.md) — audit keamanan (Jobsheet 11)
 - [`docs/manual-pengguna.md`](docs/manual-pengguna.md) — panduan penggunaan aplikasi
+- [`../../Setup-Database-PostgreSQL-Laragon.md`](../../Setup-Database-PostgreSQL-Laragon.md) — cara menyiapkan PostgreSQL & database `simpus_mini` khusus di Laragon
 
 ## Catatan
-- Seluruh berkas PHP telah dilolos-uji `php -l` (tanpa error sintaks). Koneksi database tidak dapat diuji langsung di lingkungan penyusunan dokumen ini (tidak ada instance PostgreSQL/ekstensi `pdo_pgsql`) — pastikan diuji ulang di lab dengan PostgreSQL aktif sebelum demo UAS.
+- Seluruh berkas PHP telah dilolos-uji `php -l` (tanpa error sintaks). Sudah diverifikasi jalan end-to-end (Apache + PHP 8.3 + PostgreSQL 14.5 di Laragon), termasuk lewat virtual host langsung maupun bersarang di bawah domain proyek — lihat `Setup-Database-PostgreSQL-Laragon.md` di root repo untuk langkah setup database-nya.
 - Untuk presentasi UAS, siapkan penjelasan alasan desain teknis: mengapa struktur tabel dan alur transaksi peminjaman dirancang seperti ini (lihat `README.md` Jobsheet 12 untuk detail transaksi stok).
