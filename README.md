@@ -68,19 +68,19 @@
 
 | Mgg | Sub-CPMK (Kemampuan Akhir) | Indikator | Kriteria & Bentuk Penilaian (OBA) | Metode Pembelajaran | Materi Pembelajaran | Bobot |
 |---|---|---|---|---|---|---|
-| 1 | Memahami alur mata kuliah, konsep dasar web, dan tools pengembangan | Mampu menjelaskan cara kerja web (client-server) dan instalasi tools | Non-tes: keaktifan diskusi | Ceramah, demo tools (VSCode, XAMPP, browser devtools, Git) | Cara kerja web, HTTP, tools & environment setup | 2% |
+| 1 | Memahami alur mata kuliah, konsep dasar web, dan tools pengembangan | Mampu menjelaskan cara kerja web (client-server) dan instalasi tools | Non-tes: keaktifan diskusi | Ceramah, demo tools (VSCode, Laragon, browser devtools, Git) | Cara kerja web, HTTP, tools & environment setup | 2% |
 | 2 | Menyusun struktur halaman web dengan HTML5 semantic | Struktur HTML valid & semantic sesuai kebutuhan konten | Tes praktik: membuat halaman statis | Praktik lab, latihan terbimbing | Tag semantic, form, tabel, aksesibilitas dasar | 3% |
 | 3 | Mengimplementasikan styling dasar dengan CSS3 | Halaman terstyle sesuai box model & layout | Tes praktik: styling halaman HTML | Praktik lab | CSS selector, box model, Flexbox, Grid | 3% |
-| 4 | Membangun tampilan responsif | Halaman tampil baik di berbagai ukuran layar | Tes praktik: uji responsif multi-device | Praktik lab, studi kasus | Media query, mobile-first, framework CSS (Bootstrap/Tailwind) | 4% |
-| 5 | Merancang UI/UX aplikasi (proyek) | Wireframe/mockup sesuai kebutuhan pengguna | Non-tes: penilaian rancangan (rubrik) | Studio desain, PjBL kickoff | Prinsip UI/UX, wireframing (Figma), user flow | 5% |
+| 4 | Membangun tampilan responsif | Halaman tampil baik di berbagai ukuran layar | Tes praktik: uji responsif multi-device | Praktik lab, studi kasus | Media query, mobile-first, hamburger menu (CSS/checkbox hack) — CSS native, tanpa framework | 4% |
+| 5 | Merancang UI/UX aplikasi (proyek) | Wireframe/mockup sesuai kebutuhan pengguna | Non-tes: penilaian rancangan (rubrik) | Studio desain, PjBL kickoff | Prinsip UI/UX, wireframing (ASCII art di Markdown), user flow | 5% |
 | 6 | Menerapkan manipulasi DOM & event JavaScript | Interaksi halaman berjalan sesuai skenario | Tes praktik: fitur interaktif sederhana | Praktik lab | DOM, event handling, form validation client-side | 4% |
 | 7 | Menerapkan komunikasi asinkron (AJAX/fetch, JSON) | Data dinamis tampil tanpa reload halaman | Tes praktik: konsumsi API/JSON | Praktik lab, studi kasus | Fetch API, JSON, async/await dasar | 4% |
 | 8 | **UTS** — Mendemonstrasikan front-end statis-interaktif sesuai rancangan proyek | Front-end proyek berjalan sesuai wireframe | Tes praktik individu (produk + source code) | Ujian praktik | Evaluasi CPMK-1, CPMK-2, CPMK-3 | 15% |
 | 9 | Mengimplementasikan dasar PHP & pengolahan form | Script PHP memproses input form dengan benar | Tes praktik: form handling PHP | Praktik lab | Sintaks PHP, variabel, kontrol alur, superglobal ($_GET/$_POST) | 4% |
-| 10 | Menghubungkan aplikasi dengan basis data PostgreSQL | Koneksi & query dasar berhasil dieksekusi | Tes praktik: query SELECT/INSERT | Praktik lab | Perancangan tabel (ERD), koneksi PDO_PGSQL, tipe data PostgreSQL (SERIAL, TEXT, JSONB), query dasar | 5% |
+| 10 | Menghubungkan aplikasi dengan basis data PostgreSQL | Koneksi & query dasar berhasil dieksekusi | Tes praktik: query SELECT/INSERT | Praktik lab | Perancangan tabel (ERD), koneksi PDO_PGSQL, tipe data PostgreSQL (SERIAL, VARCHAR, INTEGER), query dasar | 5% |
 | 11 | Membangun fitur CRUD pada proyek | Fitur create-read-update-delete berfungsi penuh | Tes praktik: modul CRUD proyek | Praktik lab, PjBL lanjutan | CRUD dengan PHP & PostgreSQL, prepared statement | 6% |
 | 12 | Menerapkan autentikasi & manajemen sesi pengguna | Login/register/logout berfungsi & data sesi aman | Tes praktik: modul login proyek | Praktik lab | Session, cookie, password hashing, tabel users di PostgreSQL | 6% |
-| 13 | Menerapkan prinsip keamanan web dasar | Aplikasi tervalidasi bebas kerentanan dasar | Tes praktik: uji keamanan checklist | Praktik lab, studi kasus | SQL Injection (prepared statement PDO_PGSQL), XSS, validasi & sanitasi input | 5% |
+| 13 | Menerapkan prinsip keamanan web dasar | Aplikasi tervalidasi bebas kerentanan dasar | Tes praktik: uji keamanan checklist | Praktik lab, studi kasus | SQL Injection (prepared statement PDO_PGSQL), XSS, CSRF (token per-session), Session Fixation (`session_regenerate_id`), validasi & sanitasi input | 5% |
 | 14 | Mengintegrasikan front-end & back-end proyek secara utuh | Seluruh modul proyek terintegrasi & teruji | Non-tes: review progress (rubrik) | Praktik lab, peer review | Integrasi sistem, functional testing | 6% |
 | 15 | Mendeploy dan mendokumentasikan aplikasi | Aplikasi ter-deploy & terdokumentasi lengkap | Non-tes: dokumen teknis + demo progress | Praktik lab, presentasi progress | Deployment (local/hosting), dokumentasi teknis | 4% |
 | 16 | **UAS** — Mendemonstrasikan aplikasi web akhir secara utuh | Aplikasi web berfungsi sesuai CPMK-1 s.d. CPMK-5 | Tes praktik + presentasi (produk, source code, laporan) | Ujian praktik & presentasi | Evaluasi capaian akhir proyek | 20% |
@@ -94,9 +94,9 @@
 
 | Komponen | Bobot | Memetakan CPMK |
 |---|---|---|
-| Tugas/Praktik Mingguan (formatif) | 10% | CPMK-1, 2, 3, 4 |
+| Tugas/Praktik Mingguan (formatif) | 30% | CPMK-1, 2, 3, 4 |
 | Sikap & Kolaborasi (logbook) | 4% | CPMK-6 |
-| UTS (praktik front-end individu) | 25% | CPMK-1, 2, 3 |
+| UTS (praktik front-end individu) | 15% | CPMK-1, 2, 3 |
 | Progress & Dokumentasi Proyek | 11% | CPMK-4, 5 |
 | UAS (demo + presentasi aplikasi akhir) | 20% | CPMK-4, 5, 6 |
 | Produk Akhir Aplikasi Web (source code + fungsionalitas) | 20% | CPMK-4, 5 |
@@ -125,6 +125,7 @@
 
 ## Catatan Teknis Lab (PostgreSQL)
 
-- Instalasi lab: gunakan **PostgreSQL + pgAdmin** (atau CLI `psql`) sebagai pengganti MySQL bawaan XAMPP — PHP tetap bisa jalan lewat XAMPP, tapi ekstensi `pdo_pgsql` dan `pgsql` perlu diaktifkan manual di `php.ini`.
+- Instalasi lab: gunakan **Laragon Full** (bukan XAMPP) — sudah membundel Apache, PHP, dan PostgreSQL (ditambahkan lewat fitur **Quick Add** kalau belum otomatis terpasang), plus terminal bawaan yang sudah mengenali `psql`/`php` tanpa perlu mengatur PATH manual. Ekstensi `pdo_pgsql` dan `pgsql` perlu diaktifkan manual di `php.ini` (lewat menu PHP → Extensions di Laragon). Panduan instalasi step-by-step lengkap: `kode-praktikum/jobsheet-08/Dokumentasi/08-instalasi-postgresql-laragon.md`, dan panduan setup database proyek: `Setup-Database-PostgreSQL-Laragon.md` (root repo).
 - Koneksi PHP disarankan pakai **PDO** (`new PDO("pgsql:host=...;dbname=...", $user, $pass)`) agar sintaks query mirip dan gampang di-switch, alih-alih fungsi `mysqli_*`.
 - Perbedaan sintaks yang perlu ditekankan ke mahasiswa: `SERIAL`/`BIGSERIAL` (bukan `AUTO_INCREMENT`), `RETURNING` clause untuk mengambil ID setelah `INSERT`, penggunaan tanda kutip ganda untuk identifier case-sensitive.
+- Kalau di komputer lab/mahasiswa sudah ada instalasi PostgreSQL lain (mis. dari installer resmi postgresql.org) yang berjalan sebagai Windows Service otomatis, ia bisa bentrok rebutan port `5432` dengan PostgreSQL bawaan Laragon (Laragon gagal start, muncul dialog *"waiting for server to start...."*) — cara mendeteksi & mengatasinya ada di dokumen instalasi yang dirujuk di atas.
