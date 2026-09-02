@@ -7,13 +7,13 @@
 
 body {
     font-family: "Segoe UI", Arial, sans-serif;
-    color: #2b2b2b;
-    background-color: #f5f6f8;
+    color: #1e293b;
+    background-color: #f5f7fa;
     line-height: 1.5;
 }
 
 a {
-    color: #1d5b8a;
+    color: #2563eb;
     text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ a:hover {
 
 /* ===== Header & Navbar (Flexbox) ===== */
 header {
-    background-color: #1d5b8a;
+    background-color: #17324d;
     color: #fff;
     padding: 1rem 1.5rem;
     display: flex;
@@ -59,12 +59,12 @@ section {
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 3px rgba(23, 50, 77, 0.08);
 }
 
 section h2 {
     margin-bottom: 1rem;
-    color: #1d5b8a;
+    color: #17324d;
 }
 
 /* ===== Kartu Statistik (CSS Grid) ===== */
@@ -75,7 +75,7 @@ section h2 {
 }
 
 .card {
-    background-color: #eef4fa;
+    background-color: #eaf2f8;
     border-radius: 8px;
     padding: 1.25rem;
     text-align: center;
@@ -83,14 +83,14 @@ section h2 {
 
 .card h3 {
     font-size: 0.95rem;
-    color: #55677a;
+    color: #64748b;
     margin-bottom: 0.5rem;
 }
 
 .card p {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1d5b8a;
+    color: #2563eb;
 }
 
 /* ===== Tabel ===== */
@@ -102,20 +102,20 @@ table {
 th, td {
     text-align: left;
     padding: 0.65rem 0.75rem;
-    border-bottom: 1px solid #e2e6ea;
+    border-bottom: 1px solid #dce3ea;
 }
 
 thead {
-    background-color: #1d5b8a;
+    background-color: #17324d;
     color: #fff;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f7f9fb;
+    background-color: #f6f8fa;
 }
 
 tbody tr:hover {
-    background-color: #eef4fa;
+    background-color: #eaf2f8;
 }
 
 td button {
@@ -128,7 +128,7 @@ td button {
 }
 
 td button:first-of-type {
-    background-color: #f0ad4e;
+    background-color: #e6a23c;
     color: #fff;
 }
 
@@ -146,7 +146,7 @@ form label {
     display: block;
     margin-bottom: 0.35rem;
     font-weight: 600;
-    color: #444;
+    color: #334155;
 }
 
 form input,
@@ -154,13 +154,13 @@ form select {
     width: 100%;
     max-width: 400px;
     padding: 0.55rem 0.7rem;
-    border: 1px solid #cdd4da;
+    border: 1px solid #cbd5e1;
     border-radius: 4px;
     font-size: 1rem;
 }
 
 form button[type="submit"] {
-    background-color: #1d5b8a;
+    background-color: #2563eb;
     color: #fff;
     border: none;
     padding: 0.6rem 1.5rem;
@@ -170,13 +170,13 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #164869;
+    background-color: #1d4ed8;
 }
 
 /* ===== Footer ===== */
 footer {
     text-align: center;
     padding: 1.25rem;
-    color: #7a8794;
+    color: #64748b;
     font-size: 0.9rem;
 }
