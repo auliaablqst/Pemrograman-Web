@@ -192,10 +192,23 @@ footer {
 /* ===== Responsive Breakpoints ===== */
 
 /* Tablet ke bawah */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     main section:nth-of-type(2) {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/* ===== Hamburger Toggle (default: disembunyikan di layar besar) ===== */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    cursor: pointer;
+    font-size: 1.75rem;
+    color: #fff;
+    line-height: 1;
 }
 
 /* Mobile */
