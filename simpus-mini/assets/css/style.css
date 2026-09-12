@@ -7,10 +7,10 @@
 
 .nav-link:hover,
 .nav-link.active {
-    color: #d9e8f5 !important;
+    color: #e0e7ff !important;
 }
 
 form button[type="submit"]:hover,
 button[type="submit"]:hover {
-    background-color: #164869 !important;
+    background-color: #4338ca !important;
 }
