@@ -11,6 +11,7 @@ function initNavToggle() {
 
 // ===== Konfirmasi hapus (front-end only, belum ke server) =====
 function initHapusConfirm() {
+    const table = document.querySelector(".table-responsive table");
     document.querySelectorAll(".btn-hapus").forEach(function (btn) {
         btn.addEventListener("click", function () {
             const row = btn.closest("tr");
@@ -18,10 +19,26 @@ function initHapusConfirm() {
             const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?");
             if (yakin && row) {
                 row.remove();
+                if (table) updateCounter(table);
             }
         });
     });
 }
+
+function updateCounter(table) {
+    const counterEl = document.getElementById("counter-info");
+    if (!counterEl) return;
+
+    const rows = table.querySelectorAll("tbody tr");
+    const total = rows.length;
+    let tampil = 0;
+    rows.forEach(function (row) {
+        if (row.style.display !== "none") tampil++;
+    });
+
+    counterEl.textContent = "Menampilkan " + tampil + " dari " + total + " buku";
+}
+
 
 // ===== Filter/pencarian tabel real-time =====
 function initTableFilter() {
