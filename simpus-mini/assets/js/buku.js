@@ -23,6 +23,7 @@ async function muatDaftarBuku() {
                 "<td>" + buku.pengarang + "</td>" +
                 "<td>" + buku.tahun + "</td>" +
                 "<td>" + buku.stok + "</td>" +
+                "<td>" + buku.kategori + "</td>" +
                 "<td>" +
                 "<button type=\"button\">Edit</button> " +
                 "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
@@ -37,7 +38,7 @@ async function muatDaftarBuku() {
         }
     } catch (err) {
         tbody.innerHTML =
-            "<tr><td colspan=\"5\">Gagal memuat data: " + err.message + "</td></tr>";
+            "<tr><td colspan=\"6\">Gagal memuat data: " + err.message + "</td></tr>";
     } finally {
         loading.style.display = "none";
     }
