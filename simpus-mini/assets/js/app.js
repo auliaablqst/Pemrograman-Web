@@ -9,25 +9,10 @@ function initNavToggle() {
     });
 }
 
-// ===== Konfirmasi hapus (front-end only, belum ke server) =====
-function initHapusConfirm() {
-    const table = document.querySelector(".table-responsive table");
-    document.querySelectorAll(".btn-hapus").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            const row = btn.closest("tr");
-            const nama = row ? row.querySelector("td")?.textContent : "data ini";
-            const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?");
-            if (yakin && row) {
-                row.remove();
-                if (table) updateCounter(table);
-            }
-        });
-    });
-}
-
+// ===== Counter jumlah baris tabel =====
 function updateCounter(table) {
     const counterEl = document.getElementById("counter-info");
-    if (!counterEl) return;
+    if (!counterEl || !table) return;
 
     const rows = table.querySelectorAll("tbody tr");
     const total = rows.length;
@@ -39,14 +24,33 @@ function updateCounter(table) {
     counterEl.textContent = "Menampilkan " + tampil + " dari " + total + " buku";
 }
 
+// ===== Konfirmasi hapus (front-end only, belum ke server) =====
+// Memakai event delegation di document karena baris tabel sekarang
+// dirender dinamis via fetch (lihat buku.js/anggota.js) sehingga
+// tombol .btn-hapus belum tentu ada saat DOMContentLoaded.
+function initHapusConfirm() {
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".btn-hapus");
+        if (!btn) return;
 
-// ===== Filter/pencarian tabel real-time =====
+        const row = btn.closest("tr");
+        const table = btn.closest("table");
+        const nama = row ? row.querySelector("td")?.textContent : "data ini";
+        const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?");
+        if (yakin && row) {
+            row.remove();
+            if (table) updateCounter(table);
+        }
+    });
+}
+
+// ===== Filter/pencarian tabel real-time (hanya kolom Judul) =====
 function initTableFilter() {
     const input = document.getElementById("search-input");
     const table = document.querySelector(".table-responsive table");
     if (!input || !table) return;
 
-    updateCounter(table);   // ← baris baru: tampilkan counter saat halaman pertama dimuat
+    updateCounter(table);
 
     input.addEventListener("keyup", function () {
         const keyword = input.value.toLowerCase();
@@ -56,11 +60,11 @@ function initTableFilter() {
             const teks = kolomJudul ? kolomJudul.textContent.toLowerCase() : "";
             row.style.display = teks.includes(keyword) ? "" : "none";
         });
-        updateCounter(table);   // ← baris baru: update counter setiap kali user mengetik
+        updateCounter(table);
     });
 }
 
-// ===== Validasi form (client-side) =====
+// ===== Validasi form (client-side, pakai array aturan + forEach) =====
 function tampilkanError(input, pesan) {
     hapusError(input);
     const span = document.createElement("span");
