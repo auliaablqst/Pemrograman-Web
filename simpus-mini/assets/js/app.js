@@ -46,14 +46,17 @@ function initTableFilter() {
     const table = document.querySelector(".table-responsive table");
     if (!input || !table) return;
 
+    updateCounter(table);   // ← baris baru: tampilkan counter saat halaman pertama dimuat
+
     input.addEventListener("keyup", function () {
         const keyword = input.value.toLowerCase();
         const rows = table.querySelectorAll("tbody tr");
         rows.forEach(function (row) {
             const kolomJudul = row.querySelector("td");
-        const teks = kolomJudul ? kolomJudul.textContent.toLowerCase() : "";
+            const teks = kolomJudul ? kolomJudul.textContent.toLowerCase() : "";
             row.style.display = teks.includes(keyword) ? "" : "none";
         });
+        updateCounter(table);   // ← baris baru: update counter setiap kali user mengetik
     });
 }
 
