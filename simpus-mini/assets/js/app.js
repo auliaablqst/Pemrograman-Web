@@ -94,9 +94,20 @@ function initValidasiForm() {
             const nilai = parseInt(stok.value, 10);
             if (isNaN(nilai) || nilai < 0) {
                 tampilkanError(stok, "Stok tidak boleh negatif.");
-                valid = false;
+            valid = false;
             } else {
                 hapusError(stok);
+            }
+        }
+
+        const isbn = form.querySelector("[name='isbn']");
+        if (isbn && isbn.value.trim() !== "") {
+            const polaIsbn = /^[0-9-]+$/;
+            if (!polaIsbn.test(isbn.value.trim())) {
+                tampilkanError(isbn, "ISBN hanya boleh berisi angka dan tanda hubung.");
+            valid = false;
+            } else {
+                hapusError(isbn);
             }
         }
 
