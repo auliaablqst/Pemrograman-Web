@@ -24,6 +24,54 @@ function updateCounter(table) {
     counterEl.textContent = "Menampilkan " + tampil + " dari " + total + " buku";
 }
 
+// ===== Fungsi generik untuk fetch & render tabel dari JSON =====
+async function muatDataTabel(urlJson, daftarKolom) {
+    const tbody = document.querySelector(".table-responsive table tbody");
+    const loading = document.getElementById("loading-indicator");
+    if (!tbody) return;
+
+    loading.style.display = "block";
+    tbody.innerHTML = "";
+
+    try {
+        await new Promise((resolve) => setTimeout(resolve, 600));
+
+        const res = await fetch(urlJson);
+        if (!res.ok) {
+            throw new Error("Gagal mengambil data (status " + res.status + ")");
+        }
+        const daftarData = await res.json();
+
+        daftarData.forEach(function (item) {
+            const tr = document.createElement("tr");
+            let isiBaris = "";
+
+            daftarKolom.forEach(function (kunci) {
+                isiBaris += "<td>" + item[kunci] + "</td>";
+            });
+
+            isiBaris +=
+                "<td>" +
+                "<button type=\"button\">Edit</button> " +
+                "<button type=\"button\" class=\"btn-hapus\">Hapus</button>" +
+                "</td>";
+
+            tr.innerHTML = isiBaris;
+            tbody.appendChild(tr);
+        });
+
+        const table = document.querySelector(".table-responsive table");
+        if (table && typeof updateCounter === "function") {
+            updateCounter(table);
+        }
+    } catch (err) {
+        tbody.innerHTML =
+            "<tr><td colspan=\"" + (daftarKolom.length + 1) + "\">Gagal memuat data: " + err.message + "</td></tr>";
+    } finally {
+        loading.style.display = "none";
+    }
+}
+
 // ===== Konfirmasi hapus (front-end only, belum ke server) =====
 // Memakai event delegation di document karena baris tabel sekarang
 // dirender dinamis via fetch (lihat buku.js/anggota.js) sehingga
@@ -57,8 +105,7 @@ function initTableFilter() {
         const keyword = input.value.toLowerCase();
         const rows = table.querySelectorAll("tbody tr");
         rows.forEach(function (row) {
-            const kolomJudul = row.querySelector("td");
-            const teks = kolomJudul ? kolomJudul.textContent.toLowerCase() : "";
+            const teks = row.textContent.toLowerCase();
             row.style.display = teks.includes(keyword) ? "" : "none";
         });
         updateCounter(table);
