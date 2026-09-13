@@ -249,10 +249,17 @@ footer {
     }
 
     header nav {
-        display: none;
-        width: 100%;
-        order: 3;
-        margin-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    width: 100%;
+    order: 3;
+    margin-top: 0;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+    header nav.nav-open {
+    max-height: 500px;
+    margin-top: 1rem;
     }
 
     .nav-toggle:checked ~ nav {
