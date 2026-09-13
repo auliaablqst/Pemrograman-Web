@@ -8,7 +8,6 @@ async function muatDaftarBuku() {
     tbody.innerHTML = "";
 
     try {
-        // simulasi delay jaringan agar loading indicator terlihat
         await new Promise((resolve) => setTimeout(resolve, 600));
 
         const res = await fetch("../data/buku.json");
@@ -30,6 +29,12 @@ async function muatDaftarBuku() {
                 "</td>";
             tbody.appendChild(tr);
         });
+
+        // ← TAMBAHKAN INI: update counter setelah data selesai dirender
+        const table = document.querySelector(".table-responsive table");
+        if (table && typeof updateCounter === "function") {
+            updateCounter(table);
+        }
     } catch (err) {
         tbody.innerHTML =
             "<tr><td colspan=\"5\">Gagal memuat data: " + err.message + "</td></tr>";
