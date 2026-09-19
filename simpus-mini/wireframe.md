@@ -43,4 +43,3 @@
    - **Skenario:** Anggota yang memiliki riwayat keterlambatan dan belum melunasi denda mencoba meminjam buku baru.
    - **Aturan Bisnis:** Sistem mengunci formulir peminjaman hingga status denda pada transaksi sebelumnya dinyatakan lunas oleh Petugas.
    ```
-
