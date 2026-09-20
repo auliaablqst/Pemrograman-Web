@@ -28,6 +28,7 @@ $totalAnggota = count($_SESSION['anggota'] ?? []);
             <h3>Buku Terlambat</h3>
             <p>0</p>
         </article>
+        <p><a href="reset.php">Reset Data</a></p>
     </section>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
