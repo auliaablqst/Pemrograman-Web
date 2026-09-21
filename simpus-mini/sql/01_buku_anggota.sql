@@ -13,5 +13,7 @@ CREATE TABLE IF NOT EXISTS anggota (
     nama VARCHAR(255) NOT NULL,
     no_anggota VARCHAR(50) NOT NULL UNIQUE,
     alamat VARCHAR(255),
-    no_hp VARCHAR(30)
+    no_hp VARCHAR(30),
+    email VARCHAR(50),
+    tanggal_bergabung DATE DEFAULT CURRENT_DATE
 );
