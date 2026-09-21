@@ -1,34 +1,41 @@
 <?php
+session_start();
 $page_title = "Beranda";
+require_once __DIR__ . '/includes/koneksi.php';
 include __DIR__ . '/includes/header.php';
 
-$totalBuku = count($_SESSION['buku'] ?? []);
-$totalAnggota = count($_SESSION['anggota'] ?? []);
+try {
+    $totalBuku = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
+    $totalAnggota = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
+} catch (PDOException $e) {
+    $totalBuku = 0;
+    $totalAnggota = 0;
+}
 ?>
-    <section>
-        <h2>Selamat Datang di Sistem Perpustakaan Mini</h2>
-        <p>Aplikasi sederhana untuk mengelola data buku dan anggota perpustakaan.</p>
-    </section>
 
-    <section>
-        <h2>Ringkasan</h2>
-        <article>
-            <h3>Total Buku</h3>
-            <p><?php echo $totalBuku; ?></p>
-        </article>
-        <article>
-            <h3>Total Anggota</h3>
-            <p><?php echo $totalAnggota; ?></p>
-        </article>
-        <article>
-            <h3>Sedang Dipinjam</h3>
-            <p>0</p>
-        </article>
-        <article>
-            <h3>Buku Terlambat</h3>
-            <p>0</p>
-        </article>
-        <p><a href="reset.php">Reset Data</a></p>
-    </section>
+<section>
+    <h2>Selamat Datang di Sistem Perpustakaan Mini</h2>
+    <p>Aplikasi sederhana untuk mengelola data buku dan anggota perpustakaan.</p>
+</section>
+
+<section>
+    <h2>Ringkasan</h2>
+    <article>
+        <h3>Total Buku</h3>
+        <p><?= $totalBuku; ?></p>
+    </article>
+    <article>
+        <h3>Total Anggota</h3>
+        <p><?= $totalAnggota; ?></p>
+    </article>
+    <article>
+        <h3>Sedang Dipinjam</h3>
+        <p>0</p>
+    </article>
+    <article>
+        <h3>Buku Terlambat</h3>
+        <p>0</p>
+    </article>
+</section>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
