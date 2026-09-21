@@ -1,5 +1,4 @@
 <?php
-session_start();
 $page_title = "Daftar Buku";
 require_once __DIR__ . '/../includes/koneksi.php';
 include __DIR__ . '/../includes/header.php';
