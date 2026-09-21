@@ -5,6 +5,8 @@ $nama = trim($_POST['nama'] ?? '');
 $no_anggota = trim($_POST['no_anggota'] ?? '');
 $alamat = trim($_POST['alamat'] ?? '');
 $no_hp = trim($_POST['no_hp'] ?? '');
+$email = trim($_POST['email'] ?? '');
+$tanggal_bergabung = trim($_POST['tanggal_bergabung'] ?? '');
 
 $errors = [];
 
@@ -25,6 +27,12 @@ if ($no_hp !== '' && !preg_match('/^[0-9]+$/', $no_hp)) {
 
 if ($email === '') {
     $errors[] = "Email wajib diisi.";
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Format email tidak valid.";
+}
+
+if ($tanggalBergabung === '') {
+    $errors[] = "Tanggal bergabung wajib diisi.";
 }
 
 if (!empty($errors)) {
@@ -43,6 +51,7 @@ $_SESSION['anggota'][] = [
     'alamat' => $alamat,
     'no_hp' => $no_hp,
     'email' => $email,
+    'tanggal_bergabung' => $tanggal_bergabung,
 ];
 
 $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];
