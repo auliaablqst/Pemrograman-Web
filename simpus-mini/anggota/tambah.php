@@ -32,6 +32,10 @@ unset($_SESSION['flash']);
                 <input type="text" id="email" name="email">
             </p>
             <p>
+                <label for="tanggal_bergabung">Tanggal Bergabung</label><br>
+                <input type="text" id="tanggal_bergabung" name="tanggal_bergabung">
+            </p>
+            <p>
                 <button type="submit">Simpan</button>
             </p>
         </form>
