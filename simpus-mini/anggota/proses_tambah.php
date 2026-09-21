@@ -41,18 +41,19 @@ if (!empty($errors)) {
     exit;
 }
 
-if (!isset($_SESSION['anggota'])) {
-    $_SESSION['anggota'] = [];
-}
-
-$_SESSION['anggota'][] = [
-    'nama' => $nama,
-    'no_anggota' => $no_anggota,
-    'alamat' => $alamat,
-    'no_hp' => $no_hp,
-    'email' => $email,
-    'tanggal_bergabung' => $tanggal_bergabung,
-];
+$stmt = $pdo->prepare(
+    "INSERT INTO anggota (nama, no_anggota, alamat, no_hp, email, tanggal_bergabung)
+     VALUES (:nama, :no_anggota, :alamat, :no_hp, :email, :tanggal_bergabung)
+     RETURNING id"
+);
+$stmt->execute([
+    'nama'              => $nama,
+    'no_anggota'        => $noAnggota,
+    'alamat'            => $alamat,
+    'no_hp'             => $noHp,
+    'email'             => $email,
+    'tanggal_bergabung' => $tanggalBergabung,
+]);
 
 $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];
 header('Location: list.php');
