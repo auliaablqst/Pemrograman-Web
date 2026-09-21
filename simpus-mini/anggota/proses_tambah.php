@@ -23,6 +23,10 @@ if ($no_hp !== '' && !preg_match('/^[0-9]+$/', $no_hp)) {
     $errors[] = "No. HP hanya boleh berisi angka.";
 }
 
+if ($email === '') {
+    $errors[] = "Email wajib diisi.";
+}
+
 if (!empty($errors)) {
     $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
     header('Location: tambah.php');
@@ -38,6 +42,7 @@ $_SESSION['anggota'][] = [
     'no_anggota' => $no_anggota,
     'alamat' => $alamat,
     'no_hp' => $no_hp,
+    'email' => $email,
 ];
 
 $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];

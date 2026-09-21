@@ -23,6 +23,7 @@ $daftarAnggota = $_SESSION['anggota'] ?? [];
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>No. HP</th>
+                        <th>Email</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@ $daftarAnggota = $_SESSION['anggota'] ?? [];
                                 <td><?php echo $anggota['nama']; ?></td>
                                 <td><?php echo $anggota['alamat']; ?></td>
                                 <td><?php echo $anggota['no_hp']; ?></td>
+                                <td><?php echo $anggota['email']; ?></td>
                                 <td>
                                     <button type="button">Edit</button>
                                     <button type="button" class="btn-hapus">Hapus</button>
