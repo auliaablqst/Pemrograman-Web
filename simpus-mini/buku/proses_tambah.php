@@ -33,24 +33,18 @@ if (!empty($errors)) {
     exit;
 }
 
-try {
-    $sql = "INSERT INTO buku (judul, pengarang, tahun, isbn, stok, kategori) 
-            VALUES (:judul, :pengarang, :tahun, :isbn, :stok, :kategori)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':judul'     => $judul,
-        ':pengarang' => $pengarang,
-        ':tahun'     => (int) $tahun,
-        ':isbn'      => $isbn,
-        ':stok'      => (int) $stok,
-        ':kategori'  => $kategori
-    ]);
+$sql = "INSERT INTO buku (judul, pengarang, tahun, isbn, stok, kategori) 
+        VALUES (:judul, :pengarang, :tahun, :isbn, :stok, :kategori)";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    ':judul'     => $judul,
+    ':pengarang' => $pengarang,
+    ':tahun'     => (int) $tahun,
+    ':isbn'      => $isbn,
+    ':stok'      => (int) $stok,
+    ':kategori'  => $kategori
+]);
 
-    $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Buku berhasil ditambahkan.'];
-    header('Location: list.php');
-    exit;
-} catch (PDOException $e) {
-    $_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Gagal menyimpan ke database: ' . $e->getMessage()];
-    header('Location: tambah.php');
-    exit;
-}
+$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Buku berhasil ditambahkan.'];
+header('Location: list.php');
+exit;
