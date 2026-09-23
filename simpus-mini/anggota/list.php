@@ -47,8 +47,8 @@ $daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll
                                 <td><?php echo htmlspecialchars($anggota['no_hp']); ?></td>
                                 <td><?php echo htmlspecialchars($anggota['email']); ?></td>
                                 <td><?php echo htmlspecialchars($anggota['tanggal_bergabung']); ?></td>
-                                <td>
-                                    <button type="button">Edit</button>
+                                <td style="white-space: nowrap;">
+                                    <button type="button" class="btn-edit">Edit</button>
                                     <button type="button" class="btn-hapus">Hapus</button>
                                 </td>
                             </tr>
