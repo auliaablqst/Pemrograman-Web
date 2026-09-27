@@ -299,32 +299,55 @@ footer {
     color: #721c24;
 }
 
-/* ===== Tautan Edit yang terlihat seperti tombol ===== */
-td button:first-of-type,
-td a.btn-edit {
-    background-color: #f0ad4e;
-    color: #fff;
+/* ===== Tombol Aksi (Edit / Detail / Hapus) ===== */
+td.aksi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
 }
 
-/* ===== Tombol Detail seragam dengan Edit dan Hapus ===== */
-td button.btn-detail {
-    display: inline-block;
-    padding: 0.35rem 0.7rem;
-    margin-right: 0.35rem;
+td.aksi a.btn-edit,
+td.aksi button.btn-detail,
+td.aksi button.btn-hapus {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
     border: none;
     border-radius: 4px;
     font-size: 0.85rem;
-    background-color: #5bc0de;
-    color: #fff;
+    font-weight: 500;
     cursor: pointer;
+    line-height: 1;
+    text-decoration: none;
 }
 
-td a.btn-edit {
-    display: inline-block;
-    padding: 0.35rem 0.7rem;
-    margin-right: 0.35rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
+td.aksi a.btn-edit {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+td.aksi a.btn-edit:hover {
+    background-color: #d99236;
+}
+
+td.aksi button.btn-detail {
+    background-color: #5bc0de;
+    color: #fff;
+}
+td.aksi button.btn-detail:hover {
+    background-color: #46b8da;
+}
+
+td.aksi button.btn-hapus {
+    background-color: #dc3545;
+    color: #fff;
+}
+td.aksi button.btn-hapus:hover {
+    background-color: #c82333;
+}
+
+td.aksi form.form-hapus {
+    display: inline-flex;
 }
 
 /* ===== Form Hapus supaya sejajar dengan tombol lain ===== */

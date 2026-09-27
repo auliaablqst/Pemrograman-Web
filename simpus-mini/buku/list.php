@@ -71,7 +71,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                             <td><?php echo ($buku['tahun']); ?></td>
                             <td><?php echo ($buku['stok']); ?></td>
                             <td><?php echo date('d M Y, H:i', strtotime($buku['tanggal_ditambahkan'])); ?></td>
-                            <td>
+                            <td class="aksi">
                                 <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
                                 <button type="button" class="btn-detail">Detail</button>
                                 <form class="form-hapus" method="post" action="hapus.php">
