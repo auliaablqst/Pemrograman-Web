@@ -6,7 +6,28 @@ require_once __DIR__ . '/../includes/koneksi.php';
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
 
-$daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+$perPage = 5;
+$page = max(1, (int) ($_GET['page'] ?? 1));
+$offset = ($page - 1) * $perPage;
+$keyword = trim($_GET['q'] ?? '');
+
+if ($keyword !== '') {
+    $hitung = $pdo->prepare("SELECT COUNT(*) FROM anggota WHERE nama ILIKE :kw");
+    $hitung->execute(['kw' => '%' . $keyword . '%']);
+    $totalRows = $hitung->fetchColumn();
+
+    $stmt = $pdo->prepare("SELECT * FROM anggota WHERE nama ILIKE :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $stmt->bindValue('kw', '%' . $keyword . '%');
+} else {
+    $totalRows = $pdo->query("SELECT COUNT(*) FROM anggota")->fetchColumn();
+    $stmt = $pdo->prepare("SELECT * FROM anggota ORDER BY id DESC LIMIT :limit OFFSET :offset");
+}
+$stmt->bindValue('limit', $perPage, PDO::PARAM_INT);
+$stmt->bindValue('offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+
+$daftarAnggota = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$totalPages = max(1, (int) ceil($totalRows / $perPage));
 ?>
 <section>
     <h2>Daftar Anggota</h2>
@@ -16,8 +37,13 @@ $daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll
     <?php endif; ?>
 
     <div class="search-box">
-        <label for="search-input">Cari Nama Anggota</label>
-        <input type="text" id="search-input" placeholder="Ketik nama anggota...">
+        <form method="get" action="list.php">
+            <span>
+                <label for="search-input">Cari Nama Anggota</label><br>
+                <input type="text" id="search-input" name="q" value="<?php echo $keyword; ?>" placeholder="Ketik nama anggota...">
+            </span>
+            <button type="submit">Cari</button>
+        </form>
     </div>
 
     <div class="table-responsive">
@@ -53,13 +79,21 @@ $daftarAnggota = $pdo->query("SELECT * FROM anggota ORDER BY id DESC")->fetchAll
                                     <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
-git add anggota/list.php                            </td>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
+    </div>
+    <nav class="pagination">
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a href="list.php?page=<?php echo $i; ?><?php echo $keyword !== '' ? '&q=' . urlencode($keyword) : ''; ?>"
+                class="<?php echo $i === $page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+        <?php endfor; ?>
+    </nav>
+</section>
 </section>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>
