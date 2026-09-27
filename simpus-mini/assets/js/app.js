@@ -77,18 +77,15 @@ async function muatDataTabel(urlJson, daftarKolom) {
 // dirender dinamis via fetch (lihat buku.js/anggota.js) sehingga
 // tombol .btn-hapus belum tentu ada saat DOMContentLoaded.
 function initHapusConfirm() {
-    document.addEventListener("click", function (e) {
-        console.log(e.target);
-        const btn = e.target.closest(".btn-hapus");
-        if (!btn) return;
+    document.addEventListener("submit", function (e) {
+        const form = e.target;
+        if (!form.classList.contains("form-hapus")) return;
 
-        const row = btn.closest("tr");
-        const table = btn.closest("table");
+        const row = form.closest("tr");
         const nama = row ? row.querySelector("td")?.textContent : "data ini";
         const yakin = confirm("Yakin ingin menghapus \"" + nama + "\"?");
-        if (yakin && row) {
-            row.remove();
-            if (table) updateCounter(table);
+        if (!yakin) {
+            e.preventDefault();
         }
     });
 }
