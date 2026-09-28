@@ -90,6 +90,22 @@ function initHapusConfirm() {
     });
 }
 
+// ===== Konfirmasi sebelum Update (eksperimen Latihan 7.4 no. 1) =====
+function initEditConfirm() {
+    document.addEventListener("submit", function (e) {
+        const form = e.target;
+        if (!form.classList.contains("form-edit")) return;
+
+        // Kalau validasi form sudah membatalkan submit, jangan tampilkan konfirmasi
+        if (e.defaultPrevented) return;
+
+        const yakin = confirm("Simpan perubahan data ini?");
+        if (!yakin) {
+            e.preventDefault();
+        }
+    });
+}
+
 // ===== Filter/pencarian tabel real-time (hanya kolom Judul) =====
 function initTableFilter() {
     const input = document.getElementById("search-input");
@@ -194,6 +210,7 @@ function initValidasiForm() {
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
+    initEditConfirm();
     initTableFilter();
     initValidasiForm();
 });
