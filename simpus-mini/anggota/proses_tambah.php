@@ -1,13 +1,12 @@
 <?php
-session_start();
-require_once __DIR__ . '/../includes/koneksi.php';
+require __DIR__ . '/../includes/auth.php';
+require __DIR__ . '/../includes/koneksi.php';
 
-$nama              = trim($_POST['nama'] ?? '');
-$no_anggota        = trim($_POST['no_anggota'] ?? '');
-$alamat            = trim($_POST['alamat'] ?? '');
-$no_hp             = trim($_POST['no_hp'] ?? '');
-$email             = trim($_POST['email'] ?? '');
-$tanggal_bergabung = $_POST['tanggal_bergabung'] ?? date('Y-m-d');
+$nama = trim($_POST['nama'] ?? '');
+$no_anggota = trim($_POST['no_anggota'] ?? '');
+$alamat = trim($_POST['alamat'] ?? '');
+$no_hp = trim($_POST['no_hp'] ?? '');
+$email = trim($_POST['email'] ?? '');
 
 $errors = [];
 
@@ -17,6 +16,12 @@ if ($nama === '') {
 if ($no_anggota === '') {
     $errors[] = "No. Anggota wajib diisi.";
 }
+if ($alamat === '') {
+    $errors[] = "Alamat wajib diisi.";
+}
+if ($no_hp !== '' && !preg_match('/^[0-9]+$/', $no_hp)) {
+    $errors[] = "No. HP hanya boleh berisi angka.";
+}
 
 if (!empty($errors)) {
     $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
@@ -25,16 +30,16 @@ if (!empty($errors)) {
 }
 
 try {
-    $sql = "INSERT INTO anggota (nama, no_anggota, alamat, no_hp, email, tanggal_bergabung) 
-            VALUES (:nama, :no_anggota, :alamat, :no_hp, :email, :tanggal_bergabung)";
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare(
+        "INSERT INTO anggota (nama, no_anggota, alamat, no_hp, email)
+         VALUES (:nama, :no_anggota, :alamat, :no_hp, :email)"
+    );
     $stmt->execute([
-        ':nama'              => $nama,
-        ':no_anggota'        => $no_anggota,
-        ':alamat'            => $alamat,
-        ':no_hp'             => $no_hp,
-        ':email'             => $email,
-        ':tanggal_bergabung' => $tanggal_bergabung
+        'nama' => $nama,
+        'no_anggota' => $no_anggota,
+        'alamat' => $alamat,
+        'no_hp' => $no_hp,
+        'email' => $email,
     ]);
 
     $_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];

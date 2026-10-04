@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 $page_title = "Tambah Anggota";
 include __DIR__ . '/../includes/header.php';
 
@@ -30,10 +31,6 @@ unset($_SESSION['flash']);
             <p>
                 <label for="email">Email</label><br>
                 <input type="text" id="email" name="email">
-            </p>
-            <p>
-                <label for="tanggal_bergabung">Tanggal Bergabung</label><br>
-                <input type="text" id="tanggal_bergabung" name="tanggal_bergabung">
             </p>
             <p>
                 <button type="submit">Simpan</button>

@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 $page_title = "Edit Anggota";
 include __DIR__ . '/../includes/header.php';
 require __DIR__ . '/../includes/koneksi.php';
@@ -23,20 +24,18 @@ if (!$anggota) {
 ?>
     <section>
         <h2>Edit Anggota</h2>
-
         <?php if ($flash): ?>
             <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
         <?php endif; ?>
-
         <form id="form-tambah" class="form-edit" method="post" action="proses_edit.php">
             <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
             <p>
                 <label for="nama">Nama</label><br>
-                <input type="text" id="nama" name="nama" value="<?php echo $anggota['nama']; ?>" required>
+                <input type="text" id="nama" name="nama" value="<?php echo $anggota['nama']; ?>">
             </p>
             <p>
                 <label for="no_anggota">No. Anggota</label><br>
-                <input type="text" id="no_anggota" name="no_anggota" value="<?php echo $anggota['no_anggota']; ?>" required>
+                <input type="text" id="no_anggota" name="no_anggota" value="<?php echo $anggota['no_anggota']; ?>">
             </p>
             <p>
                 <label for="alamat">Alamat</label><br>
@@ -51,12 +50,9 @@ if (!$anggota) {
                 <input type="text" id="email" name="email" value="<?php echo $anggota['email']; ?>">
             </p>
             <p>
-                <label for="tanggal_bergabung">Tanggal Bergabung</label><br>
-                <input type="text" id="tanggal_bergabung" name="tanggal_bergabung" value="<?php echo $anggota['tanggal_bergabung']; ?>">
-            </p>
-            <p>
-                <button type="submit">Update</button>
+                <button type="submit">Simpan Perubahan</button>
             </p>
         </form>
     </section>
+
 <?php include __DIR__ . '/../includes/footer.php'; ?>
