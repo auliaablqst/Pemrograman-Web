@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: list.php');
     exit;
 }
+csrf_verify();
 
 $id = $_POST['id'] ?? null;
 if ($id) {
