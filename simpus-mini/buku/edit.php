@@ -25,29 +25,29 @@ if (!$buku) {
     <section>
         <h2>Edit Buku</h2>
         <?php if ($flash): ?>
-            <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
+            <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
         <?php endif; ?>
         <form id="form-tambah" class="form-edit" method="post" action="proses_edit.php">
-            <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
+            <input type="hidden" name="id" value="<?php echo e($buku['id']); ?>">
             <p>
                 <label for="judul">Judul</label><br>
-                <input type="text" id="judul" name="judul" value="<?php echo $buku['judul']; ?>">
+                <input type="text" id="judul" name="judul" value="<?php echo e($buku['judul']); ?>">
             </p>
             <p>
                 <label for="pengarang">Pengarang</label><br>
-                <input type="text" id="pengarang" name="pengarang" value="<?php echo $buku['pengarang']; ?>">
+                <input type="text" id="pengarang" name="pengarang" value="<?php echo e($buku['pengarang']); ?>">
             </p>
             <p>
                 <label for="tahun">Tahun Terbit</label><br>
-                <input type="number" id="tahun" name="tahun" value="<?php echo $buku['tahun']; ?>">
+                <input type="number" id="tahun" name="tahun" value="<?php echo e($buku['tahun']); ?>">
             </p>
             <p>
                 <label for="isbn">ISBN</label><br>
-                <input type="text" id="isbn" name="isbn" value="<?php echo $buku['isbn']; ?>">
+                <input type="text" id="isbn" name="isbn" value="<?php echo e($buku['isbn']); ?>">
             </p>
             <p>
                 <label for="stok">Stok</label><br>
-                <input type="number" id="stok" name="stok" value="<?php echo $buku['stok']; ?>">
+                <input type="number" id="stok" name="stok" value="<?php echo e($buku['stok']); ?>">
             </p>
             <p>
                 <label for="kategori">Kategori</label><br>

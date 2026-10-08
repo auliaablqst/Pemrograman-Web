@@ -43,14 +43,15 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
     <h2>Daftar Buku</h2>
 
     <?php if ($flash): ?>
-        <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
+        <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
     <?php endif; ?>
+    
+    <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Ketik judul atau pengarang...">
 
     <div class="search-box">
         <form method="get" action="list.php">
             <span>
                 <label for="search-input">Cari Judul atau Pengarang</label><br>
-                <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Ketik judul atau pengarang...">
             </span>
             <button type="submit">Cari</button>
         </form>
