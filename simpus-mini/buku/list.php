@@ -45,7 +45,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
     <?php if ($flash): ?>
         <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
     <?php endif; ?>
-    
+
     <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Ketik judul atau pengarang...">
 
     <div class="search-box">
@@ -86,7 +86,8 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                                 <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
                                 <button type="button" class="btn-detail">Detail</button>
                                 <form class="form-hapus" method="post" action="hapus.php">
-                                    <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
+                                    <?php echo csrf_field(); ?>
+                                    <input type="hidden" name="id" value="<?php echo e($buku['id']); ?>">
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>
