@@ -29,6 +29,11 @@ if ($isbn !== '' && !preg_match('/^[0-9-]+$/', $isbn)) {
     $errors[] = "ISBN hanya boleh berisi angka dan tanda hubung.";
 }
 
+$kategoriValid = ['fiksi', 'non-fiksi', 'referensi'];
+if (!in_array($kategori, $kategoriValid, true)) {
+    $errors[] = "Kategori tidak valid.";
+}
+
 if (!empty($errors)) {
     $_SESSION['flash'] = ['type' => 'error', 'pesan' => implode(' ', $errors)];
     header('Location: tambah.php');
