@@ -8,17 +8,20 @@ unset($_SESSION['flash']);
 ?>
     <section>
         <h2>Tambah Anggota</h2>
+        
         <?php if ($flash): ?>
             <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo e($flash['pesan']); ?></p>
         <?php endif; ?>
+
         <form id="form-tambah" method="post" action="proses_tambah.php">
+            <?php echo csrf_field(); ?>
             <p>
                 <label for="nama">Nama</label><br>
-                <input type="text" id="nama" name="nama">
+                <input type="text" id="nama" name="nama" required>
             </p>
             <p>
                 <label for="no_anggota">No. Anggota</label><br>
-                <input type="text" id="no_anggota" name="no_anggota">
+                <input type="text" id="no_anggota" name="no_anggota" required>
             </p>
             <p>
                 <label for="alamat">Alamat</label><br>

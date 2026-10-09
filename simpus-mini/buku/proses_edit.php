@@ -1,9 +1,9 @@
 <?php
 require __DIR__ . '/../includes/auth.php';
+require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/koneksi.php';
-csrf_verify();
 
-$id = $_POST['id'] ?? null;
+csrf_verify();
 
 $id = $_POST['id'] ?? null;
 $judul = trim($_POST['judul'] ?? '');
@@ -19,7 +19,6 @@ if (!$id) {
 }
 
 $errors = [];
-
 if ($judul === '') {
     $errors[] = "Judul wajib diisi.";
 }

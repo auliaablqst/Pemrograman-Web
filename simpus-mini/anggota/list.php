@@ -1,7 +1,8 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 $page_title = "Daftar Anggota";
 include __DIR__ . '/../includes/header.php';
-require_once __DIR__ . '/../includes/koneksi.php';
+require __DIR__ . '/../includes/koneksi.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
@@ -62,7 +63,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
             <tbody>
                 <?php if (empty($daftarAnggota)): ?>
                     <tr>
-                        <td colspan="7">Belum ada data anggota. Silakan tambah lewat menu "Tambah Anggota".</td>
+                        <td colspan="7">Tidak ada data anggota yang cocok.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($daftarAnggota as $anggota): ?>
@@ -73,11 +74,11 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                             <td><?php echo e($anggota['no_hp']); ?></td>
                             <td><?php echo e($anggota['email']); ?></td>
                             <td><?php echo e($anggota['tanggal_bergabung']); ?></td>
-                            <td class="aksi">
+                            <td>
                                 <a href="edit.php?id=<?php echo $anggota['id']; ?>" class="btn-edit">Edit</a>
-                                <button type="button" class="btn-detail">Detail</button>
                                 <form class="form-hapus" method="post" action="hapus.php">
                                     <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
+                                    <?php echo csrf_field(); ?>
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>

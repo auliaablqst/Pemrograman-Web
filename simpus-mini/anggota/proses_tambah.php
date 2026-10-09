@@ -1,6 +1,9 @@
 <?php
 require __DIR__ . '/../includes/auth.php';
+require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/koneksi.php';
+
+csrf_verify();
 
 $nama = trim($_POST['nama'] ?? '');
 $no_anggota = trim($_POST['no_anggota'] ?? '');
@@ -9,7 +12,6 @@ $no_hp = trim($_POST['no_hp'] ?? '');
 $email = trim($_POST['email'] ?? '');
 
 $errors = [];
-
 if ($nama === '') {
     $errors[] = "Nama wajib diisi.";
 }

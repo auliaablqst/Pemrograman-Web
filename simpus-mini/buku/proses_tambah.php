@@ -1,9 +1,9 @@
 <?php
 require __DIR__ . '/../includes/auth.php';
+require __DIR__ . '/../includes/csrf.php';
 require __DIR__ . '/../includes/koneksi.php';
-csrf_verify();
 
-$judul = trim($_POST['judul'] ?? '');
+csrf_verify();
 
 $judul = trim($_POST['judul'] ?? '');
 $pengarang = trim($_POST['pengarang'] ?? '');
@@ -13,7 +13,6 @@ $stok = $_POST['stok'] ?? '';
 $kategori = trim($_POST['kategori'] ?? '');
 
 $errors = [];
-
 if ($judul === '') {
     $errors[] = "Judul wajib diisi.";
 }
@@ -38,7 +37,8 @@ if (!empty($errors)) {
 
 $stmt = $pdo->prepare(
     "INSERT INTO buku (judul, pengarang, tahun, isbn, stok, kategori)
-     VALUES (:judul, :pengarang, :tahun, :isbn, :stok, :kategori)"
+     VALUES (:judul, :pengarang, :tahun, :isbn, :stok, :kategori)
+     RETURNING id"
 );
 $stmt->execute([
     'judul' => $judul,

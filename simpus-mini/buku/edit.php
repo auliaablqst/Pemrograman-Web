@@ -24,23 +24,25 @@ if (!$buku) {
 ?>
 <section>
     <h2>Edit Buku</h2>
+
     <?php if ($flash): ?>
         <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
     <?php endif; ?>
-    <form id="form-tambah" class="form-edit" method="post" action="proses_edit.php">
+
+    <form id="form-tambah" method="post" action="proses_edit.php">
         <?php echo csrf_field(); ?>
-        <input type="hidden" name="id" value="<?php echo e($buku['id']); ?>">
+        <input type="hidden" name="id" value="<?php echo (int) $buku['id']; ?>">
         <p>
             <label for="judul">Judul</label><br>
-            <input type="text" id="judul" name="judul" value="<?php echo e($buku['judul']); ?>">
+            <input type="text" id="judul" name="judul" value="<?php echo e($buku['judul']); ?>" required>
         </p>
         <p>
             <label for="pengarang">Pengarang</label><br>
-            <input type="text" id="pengarang" name="pengarang" value="<?php echo e($buku['pengarang']); ?>">
+            <input type="text" id="pengarang" name="pengarang" value="<?php echo e($buku['pengarang']); ?>" required>
         </p>
         <p>
             <label for="tahun">Tahun Terbit</label><br>
-            <input type="number" id="tahun" name="tahun" value="<?php echo e($buku['tahun']); ?>">
+            <input type="number" id="tahun" name="tahun" min="1900" max="2026" value="<?php echo $buku['tahun']; ?>" required>
         </p>
         <p>
             <label for="isbn">ISBN</label><br>
@@ -48,7 +50,7 @@ if (!$buku) {
         </p>
         <p>
             <label for="stok">Stok</label><br>
-            <input type="number" id="stok" name="stok" value="<?php echo e($buku['stok']); ?>">
+            <input type="number" id="stok" name="stok" min="0" value="<?php echo $buku['stok']; ?>" required>
         </p>
         <p>
             <label for="kategori">Kategori</label><br>
@@ -59,7 +61,7 @@ if (!$buku) {
             </select>
         </p>
         <p>
-            <button type="submit">Simpan Perubahan</button>
+            <button type="submit">Update</button>
         </p>
     </form>
 </section>

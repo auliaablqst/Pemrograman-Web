@@ -24,18 +24,21 @@ if (!$anggota) {
 ?>
     <section>
         <h2>Edit Anggota</h2>
+
         <?php if ($flash): ?>
             <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo e($flash['pesan']); ?></p>
         <?php endif; ?>
-        <form id="form-tambah" class="form-edit" method="post" action="proses_edit.php">
+
+        <form id="form-tambah" method="post" action="proses_edit.php">
+            <?php echo csrf_field(); ?>
             <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
             <p>
                 <label for="nama">Nama</label><br>
-                <input type="text" id="nama" name="nama" value="<?php echo e($anggota['nama']); ?>">
+                <input type="text" id="nama" name="nama" value="<?php echo e($anggota['nama']); ?>" required>
             </p>
             <p>
                 <label for="no_anggota">No. Anggota</label><br>
-                <input type="text" id="no_anggota" name="no_anggota" value="<?php echo e($anggota['no_anggota']); ?>">
+                <input type="text" id="no_anggota" name="no_anggota" value="<?php echo e($anggota['no_anggota']); ?>" required>
             </p>
             <p>
                 <label for="alamat">Alamat</label><br>
@@ -50,7 +53,7 @@ if (!$anggota) {
                 <input type="text" id="email" name="email" value="<?php echo e($anggota['email']); ?>">
             </p>
             <p>
-                <button type="submit">Simpan Perubahan</button>
+                <button type="submit">Update</button>
             </p>
         </form>
     </section>

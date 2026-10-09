@@ -12,22 +12,12 @@ $offset = ($page - 1) * $perPage;
 $keyword = trim($_GET['q'] ?? '');
 
 if ($keyword !== '') {
-    $like = '%' . $keyword . '%';
-
-    $hitung = $pdo->prepare(
-        "SELECT COUNT(*) FROM buku
-         WHERE judul ILIKE :kw_judul OR pengarang ILIKE :kw_pengarang"
-    );
-    $hitung->execute(['kw_judul' => $like, 'kw_pengarang' => $like]);
+    $hitung = $pdo->prepare("SELECT COUNT(*) FROM buku WHERE judul ILIKE :kw");
+    $hitung->execute(['kw' => '%' . $keyword . '%']);
     $totalRows = $hitung->fetchColumn();
 
-    $stmt = $pdo->prepare(
-        "SELECT * FROM buku
-         WHERE judul ILIKE :kw_judul OR pengarang ILIKE :kw_pengarang
-         ORDER BY id DESC LIMIT :limit OFFSET :offset"
-    );
-    $stmt->bindValue('kw_judul', $like);
-    $stmt->bindValue('kw_pengarang', $like);
+    $stmt = $pdo->prepare("SELECT * FROM buku WHERE judul ILIKE :kw ORDER BY id DESC LIMIT :limit OFFSET :offset");
+    $stmt->bindValue('kw', '%' . $keyword . '%');
 } else {
     $totalRows = $pdo->query("SELECT COUNT(*) FROM buku")->fetchColumn();
     $stmt = $pdo->prepare("SELECT * FROM buku ORDER BY id DESC LIMIT :limit OFFSET :offset");
@@ -43,15 +33,14 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
     <h2>Daftar Buku</h2>
 
     <?php if ($flash): ?>
-        <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
+        <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
     <?php endif; ?>
-
-    <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Ketik judul atau pengarang...">
 
     <div class="search-box">
         <form method="get" action="list.php">
             <span>
-                <label for="search-input">Cari Judul atau Pengarang</label><br>
+                <label for="search-input">Cari Judul Buku</label><br>
+                <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Ketik judul buku...">
             </span>
             <button type="submit">Cari</button>
         </form>
@@ -79,15 +68,13 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                         <tr>
                             <td><?php echo e($buku['judul']); ?></td>
                             <td><?php echo e($buku['pengarang']); ?></td>
-                            <td><?php echo e($buku['tahun']); ?></td>
-                            <td><?php echo e($buku['stok']); ?></td>
-                            <td><?php echo date('d M Y, H:i', strtotime($buku['tanggal_ditambahkan'])); ?></td>
-                            <td class="aksi">
+                            <td><?php echo $buku['tahun']; ?></td>
+                            <td><?php echo $buku['stok']; ?></td>
+                            <td>
                                 <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
-                                <button type="button" class="btn-detail">Detail</button>
                                 <form class="form-hapus" method="post" action="hapus.php">
+                                    <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
                                     <?php echo csrf_field(); ?>
-                                    <input type="hidden" name="id" value="<?php echo e($buku['id']); ?>">
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>
@@ -97,6 +84,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
             </tbody>
         </table>
     </div>
+
     <nav class="pagination">
         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
             <a href="list.php?page=<?php echo $i; ?><?php echo $keyword !== '' ? '&q=' . urlencode($keyword) : ''; ?>"
