@@ -25,29 +25,29 @@ if (!$anggota) {
     <section>
         <h2>Edit Anggota</h2>
         <?php if ($flash): ?>
-            <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
+            <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo e($flash['pesan']); ?></p>
         <?php endif; ?>
         <form id="form-tambah" class="form-edit" method="post" action="proses_edit.php">
             <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
             <p>
                 <label for="nama">Nama</label><br>
-                <input type="text" id="nama" name="nama" value="<?php echo $anggota['nama']; ?>">
+                <input type="text" id="nama" name="nama" value="<?php echo e($anggota['nama']); ?>">
             </p>
             <p>
                 <label for="no_anggota">No. Anggota</label><br>
-                <input type="text" id="no_anggota" name="no_anggota" value="<?php echo $anggota['no_anggota']; ?>">
+                <input type="text" id="no_anggota" name="no_anggota" value="<?php echo e($anggota['no_anggota']); ?>">
             </p>
             <p>
                 <label for="alamat">Alamat</label><br>
-                <input type="text" id="alamat" name="alamat" value="<?php echo $anggota['alamat']; ?>">
+                <input type="text" id="alamat" name="alamat" value="<?php echo e($anggota['alamat']); ?>">
             </p>
             <p>
                 <label for="no_hp">No. HP</label><br>
-                <input type="text" id="no_hp" name="no_hp" value="<?php echo $anggota['no_hp']; ?>">
+                <input type="text" id="no_hp" name="no_hp" value="<?php echo e($anggota['no_hp']); ?>">
             </p>
             <p>
                 <label for="email">Email</label><br>
-                <input type="text" id="email" name="email" value="<?php echo $anggota['email']; ?>">
+                <input type="text" id="email" name="email" value="<?php echo e($anggota['email']); ?>">
             </p>
             <p>
                 <button type="submit">Simpan Perubahan</button>

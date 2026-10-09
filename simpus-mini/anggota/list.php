@@ -33,14 +33,14 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
     <h2>Daftar Anggota</h2>
 
     <?php if ($flash): ?>
-        <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
+        <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo e($flash['pesan']); ?></p>
     <?php endif; ?>
 
     <div class="search-box">
         <form method="get" action="list.php">
             <span>
                 <label for="search-input">Cari Nama Anggota</label><br>
-                <input type="text" id="search-input" name="q" value="<?php echo $keyword; ?>" placeholder="Ketik nama anggota...">
+                <input type="text" id="search-input" name="q" value="<?php echo e($keyword); ?>" placeholder="Ketik nama anggota...">
             </span>
             <button type="submit">Cari</button>
         </form>
@@ -67,12 +67,12 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                 <?php else: ?>
                     <?php foreach ($daftarAnggota as $anggota): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($anggota['no_anggota']); ?></td>
-                            <td><?php echo htmlspecialchars($anggota['nama']); ?></td>
-                            <td><?php echo htmlspecialchars($anggota['alamat']); ?></td>
-                            <td><?php echo htmlspecialchars($anggota['no_hp']); ?></td>
-                            <td><?php echo htmlspecialchars($anggota['email']); ?></td>
-                            <td><?php echo htmlspecialchars($anggota['tanggal_bergabung']); ?></td>
+                            <td><?php echo e($anggota['no_anggota']); ?></td>
+                            <td><?php echo e($anggota['nama']); ?></td>
+                            <td><?php echo e($anggota['alamat']); ?></td>
+                            <td><?php echo e($anggota['no_hp']); ?></td>
+                            <td><?php echo e($anggota['email']); ?></td>
+                            <td><?php echo e($anggota['tanggal_bergabung']); ?></td>
                             <td class="aksi">
                                 <a href="edit.php?id=<?php echo $anggota['id']; ?>" class="btn-edit">Edit</a>
                                 <button type="button" class="btn-detail">Detail</button>
