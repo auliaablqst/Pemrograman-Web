@@ -52,6 +52,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                 <tr>
                     <th>Judul</th>
                     <th>Pengarang</th>
+                    <th>Kategori</th>
                     <th>Tahun</th>
                     <th>Stok</th>
                     <th>Ditambahkan</th>
@@ -61,22 +62,27 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
             <tbody>
                 <?php if (empty($daftarBuku)): ?>
                     <tr>
-                        <td colspan="6">Belum ada data buku. Silakan tambah lewat menu "Tambah Buku".</td>
+                        <td colspan="7">Belum ada data buku. Silakan tambah lewat menu "Tambah Buku".</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($daftarBuku as $buku): ?>
                         <tr>
                             <td><?php echo e($buku['judul']); ?></td>
                             <td><?php echo e($buku['pengarang']); ?></td>
-                            <td><?php echo $buku['tahun']; ?></td>
-                            <td><?php echo $buku['stok']; ?></td>
+                            <td><?php echo e(label_kategori($buku['kategori'])); ?></td>
+                            <td><?php echo e($buku['tahun']); ?></td>
+                            <td><?php echo e($buku['stok']); ?></td>
+                            <td><?php echo e(format_tanggal_waktu($buku['tanggal_ditambahkan'])); ?></td>
                             <td>
-                                <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
-                                <form class="form-hapus" method="post" action="hapus.php">
-                                    <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
-                                    <?php echo csrf_field(); ?>
-                                    <button type="submit" class="btn-hapus">Hapus</button>
-                                </form>
+                                <div class="aksi">
+                                    <button type="button" class="btn-detail">Detail</button>
+                                    <a href="edit.php?id=<?php echo e($buku['id']); ?>" class="btn-edit">Edit</a>
+                                    <form class="form-hapus" method="post" action="hapus.php">
+                                        <input type="hidden" name="id" value="<?php echo e($buku['id']); ?>">
+                                        <?php echo csrf_field(); ?>
+                                        <button type="submit" class="btn-hapus">Hapus</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>

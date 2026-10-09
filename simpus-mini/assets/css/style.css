@@ -299,55 +299,101 @@ footer {
     color: #721c24;
 }
 
-/* ===== Tombol Aksi (Edit / Detail / Hapus) ===== */
-td.aksi {
+/* ===== Tombol Aksi (Detail / Edit / Hapus) ===== */
+.aksi {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.4rem;
     align-items: center;
 }
 
-td.aksi a.btn-edit,
-td.aksi button.btn-detail,
-td.aksi button.btn-hapus {
+.aksi a,
+.aksi button {
     display: inline-flex;
     align-items: center;
     padding: 0.4rem 0.85rem;
+    margin: 0;
     border: none;
     border-radius: 4px;
     font-size: 0.85rem;
     font-weight: 500;
+    font-family: inherit;
     cursor: pointer;
     line-height: 1;
     text-decoration: none;
-}
-
-td.aksi a.btn-edit {
-    background-color: #f0ad4e;
     color: #fff;
 }
-td.aksi a.btn-edit:hover {
-    background-color: #d99236;
+
+.aksi a:hover {
+    text-decoration: none;
 }
 
-td.aksi button.btn-detail {
-    background-color: #5bc0de;
-    color: #fff;
-}
-td.aksi button.btn-detail:hover {
-    background-color: #46b8da;
-}
+.aksi button.btn-detail { background-color: #0891B2; }
+.aksi button.btn-detail:hover { background-color: #0E7490; }
 
-td.aksi button.btn-hapus {
-    background-color: #dc3545;
-    color: #fff;
-}
-td.aksi button.btn-hapus:hover {
-    background-color: #c82333;
-}
+.aksi a.btn-edit { background-color: #D97706; }
+.aksi a.btn-edit:hover { background-color: #B45309; }
 
-td.aksi form.form-hapus {
+.aksi button.btn-hapus { background-color: #DC2626; }
+.aksi button.btn-hapus:hover { background-color: #B91C1C; }
+
+.aksi form.form-hapus {
     display: inline-flex;
+    margin: 0;
+}
+
+/* ===== Popup Detail Buku ===== */
+.dialog-detail {
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    width: 90%;
+    max-width: 460px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+}
+
+.dialog-detail::backdrop {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.dialog-isi {
+    padding: 1.5rem;
+}
+
+.dialog-isi h3 {
+    color: #1E3A8A;
+    margin-bottom: 1rem;
+}
+
+.dialog-isi dl {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.dialog-isi dt {
+    font-weight: 600;
+    color: #64748B;
+}
+
+.dialog-isi dd {
+    word-break: break-word;
+}
+
+.btn-tutup {
+    background-color: #64748B;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-tutup:hover {
+    background-color: #475569;
 }
 
 /* ===== Form Hapus supaya sejajar dengan tombol lain ===== */

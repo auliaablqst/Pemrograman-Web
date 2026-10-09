@@ -207,6 +207,33 @@ function initValidasiForm() {
     });
 }
 
+// ===== Popup detail buku (data diambil dari atribut data-* tombol) =====
+function initDetailDialog() {
+    const dialog = document.getElementById("dialog-detail");
+    if (!dialog) return;
+
+    // Event delegation: satu listener untuk semua tombol Detail
+    document.addEventListener("click", function (e) {
+        const tombol = e.target.closest(".btn-detail");
+        if (!tombol) return;
+
+        ["judul", "pengarang", "kategori", "tahun", "isbn", "stok", "ditambahkan"].forEach(function (kunci) {
+            const el = document.getElementById("detail-" + kunci);
+            // textContent (bukan innerHTML) supaya aman dari XSS
+            if (el) el.textContent = tombol.dataset[kunci] || "-";
+        });
+
+        dialog.showModal();
+    });
+
+    // Tutup lewat tombol "Tutup" atau klik area gelap di luar kotak
+    dialog.addEventListener("click", function (e) {
+        if (e.target === dialog || e.target.closest("[data-tutup]")) {
+            dialog.close();
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     initNavToggle();
     initHapusConfirm();
